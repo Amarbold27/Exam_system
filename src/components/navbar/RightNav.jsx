@@ -30,15 +30,20 @@ const Ul = styled.ul`
 `;
 
 const RightNav = ({ open }) => {
-  console.log(open);
+  function handleClick() {
+    console.log(open);
+    open=!{open};
+    console.log("daragdlaa",open);
+  }
   return (
-    <Ul open={open}>
+    <Ul open={open} >
       <li>
         <Link
           to="/"
           style={{ color: "#fff", textDecoration: "none" }}
           className="nav-bar"
           activeStyle={{ color: "red" }}
+          onClick={handleClick}
         >
           Нүүр
         </Link>
@@ -98,3 +103,12 @@ const RightNav = ({ open }) => {
 };
 
 export default RightNav;
+// export class MyNavbar extends React.Component {
+//   render(){
+//     return (
+//       <div>
+//         sad
+//       </div>
+//     );
+//   }
+// }
