@@ -1,5 +1,5 @@
 import "./App.css";
-import { Navbar } from "./components";
+
 import { Header } from "./components";
 
 import { ExamContainer } from "./components/exam-container";
@@ -14,7 +14,7 @@ function App() {
           <Route path="/exam" exact component={ExamContainer} />
           <Route path="/exam" exact component={ExamContainer} />
           <Route path="/high-class" exact component={ExamContainer} />
-          <Route path="/mid-class" exact component={Navbar} />
+          <Route path="/mid-class" exact component={Header} />
           <Route path="/log-in" exact component={Header} />
         </Switch>
       </Router>
