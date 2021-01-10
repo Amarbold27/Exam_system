@@ -18,13 +18,13 @@ export const SidebarData = [
     },
     {
         title: 'ЭЕШ',
-        path: '/products',
+        path: '/exam',
         icon: <FaIcons.FaCartPlus />,
         cName: 'nav-text'
     },
     {
         title: 'Ахлах анги',
-        path: '/team',
+        path: '/mid-class',
         icon: <IoIcons.IoMdPeople />,
         cName: 'nav-text'
     },
