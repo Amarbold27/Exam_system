@@ -1,0 +1,92 @@
+.container {
+  display: grid;
+  grid-template-columns: auto, auto, auto, auto, auto;
+  grid-template-rows: auto, auto, auto, auto, auto, auto;
+  column-gap: 10px;
+  row-gap: 15px;
+  width: 70vw;
+  margin: auto;
+  margin-top: 50px;
+}
+.lesson {
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+.drpLesson {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+.class {
+  grid-column-start: 4;
+  grid-column-end: 5;
+}
+.drpClass {
+  grid-column-start: 5;
+  grid-column-end: 6;
+}
+.category {
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+.drpCategory {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+.price {
+  grid-column-start: 4;
+  grid-column-end: 5;
+}
+.drpPrice {
+  grid-column-start: 5;
+  grid-column-end: 6;
+}
+.startDate {
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+.datepicker {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+.startTime {
+  grid-column-start: 4;
+  grid-column-end: 5;
+}
+.timepicker {
+  grid-column-start: 5;
+  grid-column-end: 6;
+}
+.duration {
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+.inputDuration {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+.examUrl {
+  grid-column-start: 4;
+  grid-column-end: 5;
+}
+.inputExamUrl {
+  grid-column-start: 5;
+  grid-column-end: 6;
+}
+
+.calcUrl {
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+.inputCalcUrl {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+.resultUrl {
+  grid-column-start: 4;
+  grid-column-end: 5;
+}
+.inputResUrl {
+  grid-column-start: 5;
+  grid-column-end: 6;
+}

@@ -1,18 +1,15 @@
-import React from "react";
-import * as FaIcons from "react-icons/fa";
-import * as AiIcons from "react-icons/ai";
-import * as IoIcons from "react-icons/io";
-
+import { AiOutlineHome, AiOutlineFileDone } from "react-icons/ai";
 export const SidebarData = [
   {
-    title: "Нүүр",
+    title: "НҮҮР",
+    icon: <AiOutlineHome />,
     path: "/",
-    icon: <AiIcons.AiFillHome />,
     cName: "nav-text",
     subNav: false,
   },
   {
-    title: "Сорил",
+    title: "СОРИЛУУД",
+    icon: <AiOutlineFileDone />,
     path: "/test",
     subNav: [
       {
@@ -33,11 +30,10 @@ export const SidebarData = [
       },
     ],
   },
-  {
-    title: "Нэвтрэх",
-    path: "/log-in",
-    icon: <IoIcons.IoMdHelpCircle />,
-    cName: "nav-text",
-    subNav: false,
-  },
+  // {
+  //   title: "НЭВТРЭХ",
+  //   icon: <IoLogInOutline />,
+  //   path: "/log-in",
+  //   subNav: false,
+  // },
 ];

@@ -7,8 +7,9 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   display: grid;
   grid-template-columns: auto auto auto;
+  background-color: #f5fcfc;
+  border-radius: 5px;
 }
-
 .date {
   grid-column-start: 1;
   grid-column-end: 4;
@@ -16,7 +17,6 @@
   font-size: 16px;
   color: #3b7eeb;
 }
-
 .title {
   grid-column-start: 1;
   grid-column-end: 4;
@@ -25,37 +25,33 @@
   font-size: 18px;
   text-align: center;
 }
-
 .duration {
   grid-column-start: 1;
   grid-column-end: 2;
   text-align: left;
   font-size: 15px;
 }
-
 .price {
   grid-column-start: 3;
   grid-column-end: 4;
   font-size: 15px;
   text-align: right;
 }
-
 .btnStart {
   grid-column-start: 1;
   grid-column-end: 2;
 }
-
 .btnCalc {
   grid-column-start: 2;
   grid-column-end: 3;
 }
-
 .btnRes {
   grid-column-start: 3;
   grid-column-end: 4;
 }
-
-.btnStart, .btnCalc, .btnRes {
+.btnStart,
+.btnCalc,
+.btnRes {
   color: #6b6a6a;
   text-decoration: none;
   text-transform: uppercase;
@@ -69,15 +65,12 @@
 .btnStart:hover {
   background-color: #f2f2f2;
 }
-
 .btnCalc:hover {
   background-color: #f2f2f2;
 }
-
 .btnRes:hover {
   background-color: #f2f2f2;
 }
-
 @media screen and (max-width: 800px) {
   .exam .date {
     font-size: 18px;
@@ -85,10 +78,13 @@
   .title {
     font-size: 20px;
   }
-  .btnStart, .btnCalc, .btnRes {
+  .btnStart,
+  .btnCalc,
+  .btnRes {
     font-size: 14px;
   }
-  .duration, .price {
+  .duration,
+  .price {
     font-size: 17px;
   }
 }

@@ -1,0 +1,26 @@
+.link {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
+  text-align: center;
+  font-family: Tahoma, Verdana, sans-serif;
+}
+.link:hover {
+  border: 2px solid white;
+  border-radius: 3px;
+}
+.title {
+  margin-left: 5px;
+}
+.icons {
+  vertical-align: middle;
+  margin-bottom: 3px;
+}
+@media only screen and (max-width: 500px) {
+  .link {
+    color: #20547d;
+  }
+  .icons {
+    color: rgba(255, 115, 0, 1);
+  }
+}
