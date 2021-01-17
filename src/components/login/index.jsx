@@ -22,7 +22,7 @@ class Login extends Component {
   };
   render() {
     return (
-      <form className="login-form">
+      <div className="login-form">
         {this.props.userId && <Redirect to="/exam" />}
         <h3>Нэвтрэх</h3>
 
@@ -46,13 +46,13 @@ class Login extends Component {
         </div>
         {this.props.logginIn && <Spinner />}
         {this.props.firebaseError && <div>{this.props.firebaseError}</div>}
-        <button type="success" className="btn-reg" onClick={this.login}>
+        <button className="btn-reg" onClick={this.login}>
           <span>Нэвтрэх</span>
         </button>
         <p className="forgot-password text-right">
           Бүртгүүлэх бол <a href="/register">Sign in?</a>
         </p>
-      </form>
+      </div>
     );
   }
 }

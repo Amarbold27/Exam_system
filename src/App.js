@@ -4,7 +4,7 @@ import { ExamContainer } from "./components/exam-container";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { AddExam } from "./components/add-exam";
-import LoginTest from "./components/logintest";
+//import LoginTest from "./components/logintest";
 import Login from "./components/login/index.jsx";
 import SignUpTest from "./components/signuptest";
 import LogOut from "./components/LogOut";
