@@ -16,7 +16,21 @@ export const login = (email, password) => {
         data
       )
       .then((result) => {
-        dispatch(loginSuccess(result.data));
+        const userId = result.data.localId;
+        axios
+          .get(
+            `https://exam-system-fb26a-default-rtdb.firebaseio.com/users.json?orderBy="userId"&equalTo="${​​​​userId}​​​​"`
+          )
+          .then((res) => {
+            const userId = result.data.localId;
+            const idToken = result.data.idToken;
+            const arr = Object.values(res.data);
+            const obj = arr[0];
+            const userObject = { ...obj, userId, idToken };
+            // console.log("User detail idToken: ", userObject.idToken);
+            dispatch(loginSuccess(userObject));
+          });
+        //dispatch(loginSuccess(result.data));
       })
       .catch((error) => {
         dispatch(loginError(error));

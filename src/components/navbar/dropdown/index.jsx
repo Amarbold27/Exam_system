@@ -22,7 +22,8 @@ export const Dropdown = (props) => {
               to={el.path}
               key={index}
               className={css.drpTitle}
-              onClick={props.hide}
+              //onClick={props.hide}
+              onClick={toggleBtn}
             >
               {el.title}
             </Link>

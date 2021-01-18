@@ -9,7 +9,7 @@
   flex-direction: column;
   margin: auto;
   border-radius: 10px;
-  margin-top:40px;
+  margin-top: 40px;
   box-shadow: 0px 0px 20px 0px #000000;
 }
 h3 {
@@ -21,9 +21,8 @@ h3 {
 .form-group {
   display: flex;
   flex-direction: column;
-  margin-top:20px;
+  margin-top: 20px;
   height: 30px;
- 
 }
 
 .form-control {
@@ -45,21 +44,20 @@ h3 {
   transition: height 0.3s, width 0.3s 0.1s;
 }
 
-
 .anime-label {
   transition: 0.2s ease all;
   margin-top: -30px;
   margin-left: 5px;
   font-style: italic;
-  position: static;
+  /*position: static;*/
   width: 0;
-
 }
-.form-control:hover,.anime-label:hover{
+.form-control:hover,
+.anime-label:hover {
   cursor: pointer;
 }
-.form-control:focus{
-  border-bottom: 3px solid  rgb(255, 171, 0);
+.form-control:focus {
+  border-bottom: 3px solid rgb(255, 171, 0);
   -webkit-transition: border-bottom 1s;
   -moz-transition: border-bottom 1s;
   -ms-transition: border-bottom 1s;
@@ -127,4 +125,3 @@ h3 {
   opacity: 0;
   transform: scale(0.1, 3);
 }
-

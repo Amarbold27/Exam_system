@@ -11,6 +11,7 @@ class SignUpTest extends Component {
     password1: "",
     password2: "",
     error: "",
+    role: "student",
   };
 
   changeEmail = (e) => {
@@ -25,7 +26,11 @@ class SignUpTest extends Component {
 
   signup = () => {
     if (this.state.password1 === this.state.password2) {
-      this.props.signup(this.state.email, this.state.password1);
+      this.props.signup(
+        this.state.email,
+        this.state.password1,
+        this.state.role
+      );
     } else this.setState({ error: "Нууц үг хоорондоо таарахгүй байна." });
   };
 
@@ -70,7 +75,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    signup: (email, password) => dispatch(actions.signup(email, password)),
+    signup: (email, password, role) =>
+      dispatch(actions.signup(email, password, role)),
   };
 };
 
