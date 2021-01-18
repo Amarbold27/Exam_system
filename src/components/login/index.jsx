@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./style.css";
+import "./login.css";
 import Spinner from "../spinner";
 import * as actions from "../../redux/actions/loginAction";
 import { Redirect } from "react-router-dom";
@@ -35,6 +35,7 @@ class Login extends Component {
           />
           <label className="anime-label">Нэр</label>
         </div>
+      
         <div className="form-group">
           <input
             type="password"
@@ -46,7 +47,7 @@ class Login extends Component {
         </div>
         {this.props.logginIn && <Spinner />}
         {this.props.firebaseError && <div>{this.props.firebaseError}</div>}
-        <button className="btn-reg" onClick={this.login}>
+        <button type="button" className="btn-reg" onClick={this.login}>
           <span>Нэвтрэх</span>
         </button>
         <p className="forgot-password text-right">
