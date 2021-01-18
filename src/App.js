@@ -9,8 +9,20 @@ import Login from "./components/login/index.jsx";
 import SignUpTest from "./components/signuptest";
 import LogOut from "./components/LogOut";
 import Register from "./components/register/index";
+import { LessonList } from "./components/lesson-list";
 
 function App() {
+  const lessons = [
+    "Математик",
+    "Физик",
+    "Хими",
+    "Биологи",
+    "Газар зүй",
+    "Монгол хэл",
+    "Англи хэл",
+    "Түүх",
+    "Нийгэм",
+  ];
   return (
     <div className="App">
       <Router>
@@ -18,7 +30,11 @@ function App() {
         <Switch>
           {/*<Route path="/" >*/}
           <Route path="/exam" exact component={ExamContainer} />
-          <Route path="/eesh" exact component={Navbar} />
+          <Route
+            path="/eec"
+            exact
+            component={() => <LessonList lessons={lessons} />}
+          />
           <Route path="/high-class" exact component={AddExam} />
           <Route path="/mid-class" exact component={SignUpTest} />
           <Route path="/log-in" exact component={Login} />

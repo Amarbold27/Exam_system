@@ -59,7 +59,7 @@ class Register extends Component {
     return (
       <div className="register">
         {this.props.userId && <Redirect to="/exam" />}
-        <h3>Бүртгүүлэх</h3>
+        <h3>Бүртгүүлэх </h3>
 
         <div className="form-group">
           <input
@@ -68,6 +68,7 @@ class Register extends Component {
             onChange={this.changeLastName}
             required
           />
+
           <label className="anime-label">Овог</label>
         </div>
         <div className="form-group">
@@ -149,6 +150,7 @@ const mapStateToProps = (state) => {
     saving: state.signupReducer.saving,
     firebaseError: state.signupReducer.firebaseError,
     userId: state.signupReducer.userId,
+    role: state.signupReducer.role,
   };
 };
 

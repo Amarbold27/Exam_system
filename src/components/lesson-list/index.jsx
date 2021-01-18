@@ -1,4 +1,13 @@
 import React from "react";
-import "./style.css";
+import css from "./style.module.css";
+import { Lesson } from "../lesson/index";
 
-export const LessonList = (props) => <div className="lesson-list"></div>;
+export const LessonList = (props) => {
+  return (
+    <div className={css.lesson_list}>
+      {props.lessons.map((el, index) => (
+        <Lesson ner={el} key={index} />
+      ))}
+    </div>
+  );
+};
