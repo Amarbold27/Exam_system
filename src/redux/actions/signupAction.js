@@ -17,17 +17,21 @@ export const signup = (email, password, userDetail) => {
       )
       .then((result) => {
         userDetail.userId = result.data.localId;
+        const token = result.data.idToken;
+        //console.log("token: ", token);
+        userDetail.idToken = token;
         axios
           .post(
-            "https://exam-system-fb26a-default-rtdb.firebaseio.com/users.json",
+            `https://exam-system-fb26a-default-rtdb.firebaseio.com/users.json?auth=${token}`,
             userDetail
           )
           .then((res) => {
-            const userInfo = { ...result.data, ...userDetail };
-            dispatch(signupSuccess(userInfo));
+            //const userInfo = { ...result.data, ...userDetail };
+            dispatch(signupSuccess(userDetail));
           })
           .catch((err) => {
             alert("aldaa", err);
+            dispatch(signupError(err));
           });
       })
       .catch((error) => {
