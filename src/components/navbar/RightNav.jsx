@@ -21,6 +21,7 @@ const Ul = styled.ul`
   }
 
   @media (max-width: 500px) {
+    
     margin-top: 0;
     flex-flow: column nowrap;
     background-color: #f2f6f7;

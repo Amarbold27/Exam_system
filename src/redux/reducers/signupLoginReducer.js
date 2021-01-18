@@ -4,6 +4,8 @@ const initialState = {
   firebaseError: null,
   userId: null,
   token: null,
+  //userDetail: null,
+  role: null,
 };
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -25,6 +27,7 @@ const reducer = (state = initialState, action) => {
         // token: action.data.idToken,
         userId: action.firebaseResData.localId,
         token: action.firebaseResData.idToken,
+        role: action.firebaseResData.role,
       };
     case "LOGIN_START":
       return {
@@ -43,6 +46,7 @@ const reducer = (state = initialState, action) => {
         logginIn: false,
         userId: action.firebaseResData.localId,
         token: action.firebaseResData.idToken,
+        role: action.firebaseResData.role,
       };
     case "LOGOUT":
       return {

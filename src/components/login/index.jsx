@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./style.css";
 import Spinner from "../spinner";
 import * as actions from "../../redux/actions/loginAction";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 class Login extends Component {
   state = {
@@ -21,10 +21,11 @@ class Login extends Component {
     this.props.login(this.state.email, this.state.password);
   };
   render() {
+    //console.log("role: " + this.props.role);
     return (
       <div className="login-form">
-        {this.props.userId && <Redirect to="/exam" />}
-        <h3>Нэвтрэх</h3>
+        {/*this.props.userId && <Redirect to="/exam" />*/}
+        <h3>Нэвтрэх {this.props.role}</h3>
 
         <div className="form-group">
           <input
@@ -50,7 +51,7 @@ class Login extends Component {
           <span>Нэвтрэх</span>
         </button>
         <p className="forgot-password text-right">
-          Бүртгүүлэх бол <a href="/register">Sign in?</a>
+          Бүртгүүлэх бол <Link to="/signup">Sign up?</Link>
         </p>
       </div>
     );
@@ -62,6 +63,7 @@ const mapStateToProps = (state) => {
     logginIn: state.signupReducer.logginIn,
     firebaseError: state.signupReducer.firebaseError,
     userId: state.signupReducer.userId,
+    role: state.signupReducer.role,
   };
 };
 

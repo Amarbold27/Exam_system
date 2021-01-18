@@ -8,6 +8,7 @@ import { AddExam } from "./components/add-exam";
 import Login from "./components/login/index.jsx";
 import SignUpTest from "./components/signuptest";
 import LogOut from "./components/LogOut";
+import Register from "./components/register/index";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/mid-class" exact component={SignUpTest} />
           <Route path="/log-in" exact component={Login} />
           <Route path="/log-out" exact component={LogOut} />
+          <Route path="/signup" exact component={Register} />
         </Switch>
       </Router>
     </div>

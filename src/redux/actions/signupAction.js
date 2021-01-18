@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const signup = (email, password) => {
+export const signup = (email, password, userDetail) => {
   return function (dispatch) {
     dispatch(signupStart());
 
@@ -16,7 +16,19 @@ export const signup = (email, password) => {
         data
       )
       .then((result) => {
-        dispatch(signupSuccess(result.data));
+        userDetail.userId = result.data.localId;
+        axios
+          .post(
+            "https://exam-system-fb26a-default-rtdb.firebaseio.com/users.json",
+            userDetail
+          )
+          .then((res) => {
+            const userInfo = { ...result.data, ...userDetail };
+            dispatch(signupSuccess(userInfo));
+          })
+          .catch((err) => {
+            alert("aldaa", err);
+          });
       })
       .catch((error) => {
         dispatch(signupError(error));
