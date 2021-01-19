@@ -4,6 +4,8 @@
   padding: 10px 20px;
   text-align: center;
   font-family: Tahoma, Verdana, sans-serif;
+  display: flex;
+  justify-content:column;
 }
 .link:hover {
   border: 2px solid white;
@@ -16,9 +18,10 @@
   vertical-align: middle;
   margin-bottom: 3px;
 }
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 1000px) {
   .link {
     color: #20547d;
+    
   }
   .icons {
     color: rgba(255, 115, 0, 1);

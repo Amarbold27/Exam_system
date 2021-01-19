@@ -4,8 +4,7 @@ import Burger from "./Burger";
 //border-bottom: 2px solid #f1f1f1;  background: #3367d6;
 const Nav = styled.nav`
   width: 100%;
-  height: 52px;
-
+  height: 70px;
   background: rgb(255, 171, 0);
   background: linear-gradient(
     72deg,
@@ -21,6 +20,7 @@ const Nav = styled.nav`
   margin: 0;
   display: flex;
   flex-direction: row;
+  
   justify-content: space-between;
   .logo {
   }

@@ -1,11 +1,11 @@
-import React from "react";
+import React ,  {  useState }from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Dropdown } from "./dropdown";
 import { SidebarData } from "./SideBarData";
 import "./rightnav.css";
 import { IconContext } from "react-icons/lib";
-import { IoLogInOutline, IoLogOutOutline } from "react-icons/all";
+import { IoLogInOutline, IoLogOutOutline ,AiOutlineFileAdd} from "react-icons/all";
 import { connect } from "react-redux";
 //#0d2538
 const Ul = styled.ul`
@@ -14,13 +14,14 @@ const Ul = styled.ul`
   flex-flow: row nowrap;
   margin-top: 0px;
   height: 100%;
+
   li {
     text-align: center;
     margin-top: 18px;
     margin-right: 20px;
   }
 
-  @media (max-width: 500px) {
+  @media (max-width: 1000px) {
     
     margin-top: 0;
     flex-flow: column nowrap;
@@ -33,6 +34,7 @@ const Ul = styled.ul`
     height: 100%;
     width: 70vw;
     padding-top: 3.5rem;
+   
     transition: margin-right 2s ease-in-out 1s;
     li {
       color: #20547d;
@@ -45,6 +47,15 @@ const Ul = styled.ul`
         top: 15%;
         z-index: 1;
       }
+      &:nth-child(3) {
+        margin-top: 110px;
+        margin-bottom:0;
+        z-index: 1;
+      }
+      &:nth-child(4) {
+        margin-top:0;
+        z-index: 1;
+      }
       &:last-child {
         position: absolute;
         bottom: 20%;
@@ -54,11 +65,13 @@ const Ul = styled.ul`
 `;
 
 const RightNav = (props) => {
+ 
   //console.log(open);
-
-  return (
+ 
+    return (
+    
     <IconContext.Provider value={{ className: "icons" }}>
-      <Ul open={props.open}>
+      <Ul open={props.open} >
         {SidebarData.map((el) => {
           return (
             <li>
@@ -83,6 +96,25 @@ const RightNav = (props) => {
             </li>
           );
         })}
+       
+        <li>
+          {props.userId && (props.role==='admin' || props.role==='teacher') &&(
+              <Link to="exam-add" className="link" onClick={props.hideShow} >
+                <AiOutlineFileAdd />
+                <span className="title">СОРИЛ НЭМЭХ</span>
+              </Link>
+              )
+            }
+        </li>
+        <li>
+          {props.userId && props.role==='admin'  &&(
+              <Link to="exam-add" className="link" onClick={props.hideShow} >
+                <AiOutlineFileAdd />
+                <span className="title">ЭРХ СУНГАХ</span>
+              </Link>
+              )
+            }
+        </li>
         <li>
           {props.userId ? (
             <Link to="log-out" className="link" onClick={props.hideShow}>
@@ -103,7 +135,9 @@ const RightNav = (props) => {
 const mapStateToProps = (state) => {
   return {
     userId: state.signupReducer.userId,
+    role: state.signupReducer.role,
   };
 };
+
 
 export default connect(mapStateToProps)(RightNav);

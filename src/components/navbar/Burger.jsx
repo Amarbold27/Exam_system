@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import RightNav from "./RightNav";
-
+import { connect } from "react-redux";
 const StyledBurger = styled.div`
   width: 2rem;
   height: 2rem;
@@ -9,7 +9,7 @@ const StyledBurger = styled.div`
   top: 12px;
   right: 20px;
   display: none;
-  @media (max-width: 500px) {
+  @media (max-width: 1000px) {
     display: flex;
     justify-content: space-around;
     flex-flow: column nowrap;
@@ -34,15 +34,20 @@ const StyledBurger = styled.div`
   }
 `;
 
-const Burger = () => {
+const Burger = (props) => {
   const [open, setOpen] = useState(false);
   //console.log(open); () => setOpen(!open)
   //const [toggle, setToggle] = useState(false);
   const fff = () => {
     setOpen(!open);
   };
+ 
+  //console.log(open); () => setOpen(!open)
+  //const [toggle, setToggle] = useState(false);
+ 
   return (
     <>
+     
       <StyledBurger open={open} onClick={fff}>
         <div />
         <div />
@@ -52,5 +57,11 @@ const Burger = () => {
     </>
   );
 };
+const mapStateToProps = (state) => {
+  return {
+    userId: state.signupReducer.userId,
+    role: state.signupReducer.role,
+  };
+};
 
-export default Burger;
+export default connect(mapStateToProps)(Burger);
