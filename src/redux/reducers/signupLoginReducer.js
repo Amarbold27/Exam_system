@@ -44,7 +44,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         logginIn: false,
-        userId: action.firebaseResData.localId,
+        userId: action.firebaseResData.userId,
         token: action.firebaseResData.idToken,
         role: action.firebaseResData.role,
       };

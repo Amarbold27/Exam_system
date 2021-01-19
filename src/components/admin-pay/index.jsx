@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import "./login.css";
-import Spinner from "../spinner";
+import "./admin-pay.css";
 import * as actions from "../../redux/actions/loginAction";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-class Login extends Component {
+class AdminPay extends Component {
   state = {
     email: "",
     password: "",
@@ -72,4 +71,4 @@ const mapDispatchToProps = (dispatch) => {
     login: (email, password) => dispatch(actions.login(email, password)),
   };
 };
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(AdminPay);
