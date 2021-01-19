@@ -5,13 +5,16 @@ import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 import DatePicker from "react-date-picker";
 import TimePicker from "react-time-picker";
+import * as actions from "../../redux/actions/saveExamAction";
+import { connect } from "react-redux";
+import Spinner from "../../components/spinner";
 
 class AddExam extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       lesson: "Математик",
-      class: 12,
+      class: "12",
       category: "Уралдаант сорил",
       price: "Тийм",
       date: new Date(),
@@ -20,8 +23,21 @@ class AddExam extends React.Component {
       examUrl: "",
       calcUrl: "",
       resUrl: "",
+      description: "",
     };
   }
+  lessons = [
+    "Математик",
+    "Физик",
+    "Хими",
+    "Биологи",
+    "Газар зүй",
+    "Монгол хэл",
+    "Англи хэл",
+    "Түүх",
+    "Нийгэм",
+  ];
+  category = ["Уралдаант сорил", "ЭЕШ", "Ахлах анги", "Дунд анги", "Бага анги"];
   //options = ["one", "two", "three"];
   onSelectLesson = (e) => {
     this.setState({ lesson: e.value });
@@ -52,40 +68,104 @@ class AddExam extends React.Component {
     this.setState({ calcUrl: e.target.value });
   };
   handleResUrl = (e) => {
-    this.setState({ duration: e.target.value });
+    this.setState({ resUrl: e.target.value });
+  };
+  handleDescription = (e) => {
+    this.setState({ description: e.target.value });
+  };
+  saveExam = () => {
+    const fullname = this.props.lastname[0] + "." + this.props.firstname;
+    const newExam = {
+      lesson: this.state.lesson,
+      class: this.state.class,
+      category: this.state.category,
+      price: this.state.price,
+      start_date: this.state.date,
+      start_time: this.state.time,
+      duration: this.state.duration,
+      examUrl: this.state.examUrl,
+      calcUrl: this.state.calcUrl,
+      resUrl: this.state.resUrl,
+      description: this.state.description,
+      userId: this.props.userId,
+      teacherName: fullname,
+    };
+    this.props.saveExam(newExam);
+    console.log(
+      "Save exam: ",
+      fullname
+      // this.state.lesson,
+      // this.state.class,
+      // this.state.category,
+      // this.state.price,
+      // this.state.date,
+      // this.state.time,
+      // this.state.duration,
+      // this.state.examUrl,
+      // this.state.calcUrl,
+      // this.state.resUrl,
+      // this.state.description
+    );
+  };
+  clearFields = () => {
+    //console.log("Date: ", this.state.date);
+    this.setState({
+      lesson: "Математик",
+      class: "12",
+      category: "Уралдаант сорил",
+      price: "Тийм",
+      date: new Date(),
+      time: "11:00",
+      duration: "100",
+      examUrl: "",
+      calcUrl: "",
+      resUrl: "",
+      description: "",
+    });
+    //console.log("Finished: ", this.props.newExamState);
   };
   render() {
     return (
       <div className={style.container}>
         <div className={style.lesson}>Хичээл</div>
         <Dropdown
-          options={["Математик", "Монгол хэл", "three"]}
+          options={this.lessons}
           onChange={this.onSelectLesson}
-          value={"Математик"}
-          placeholder="Select an option"
+          value={this.state.lesson}
           className={style.drpLesson}
         />
         <div className={style.class}>Анги</div>
         <Dropdown
-          options={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]}
+          options={[
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+          ]}
           onChange={this.onSelectClass}
-          value={"1"}
-          placeholder="Select a class"
+          value={this.state.class} //
           className={style.drpClass}
         />
         <div className={style.category}>Төрөл</div>
         <Dropdown
-          options={["Уралдаант сорил", "ЭЕШ", "Ахлах анги"]}
+          options={this.category}
           onChange={this.onSelectCategory}
-          value={""}
-          placeholder="Уралдаант сорил"
+          value={this.state.category}
           className={style.drpCategory}
         />
         <div className={style.price}>Төлбөртэй эсэх</div>
         <Dropdown
           options={["Тийм", "Үгүй"]}
           onChange={this.onSelectPrice}
-          value={"Тийм"}
+          value={this.state.price}
           placeholder="Төлбартэй эсэх"
           className={style.drpPrice}
         />
@@ -109,6 +189,7 @@ class AddExam extends React.Component {
           className={style.inputDuration}
           placeholder="Үргэлжлэх хугацаа минутаар."
         />
+        {this.props.newExamState.saving && <Spinner />}
         <div className={style.examUrl}>Шалгалтын холбоос</div>
         <input
           type="text"
@@ -133,8 +214,35 @@ class AddExam extends React.Component {
           className={style.inputResUrl}
           placeholder="Google spread sheet url..."
         />
+        <div className={style.description}>Тайлбар</div>
+        <textarea
+          maxLength={120}
+          value={this.state.description}
+          onChange={this.handleDescription}
+        ></textarea>
+        <div className={style.btns}>
+          <button className={style.btnClear} onClick={this.clearFields}>
+            Цэвэрлэх
+          </button>
+          <button className={style.btnSave} onClick={this.saveExam}>
+            Хадгалах
+          </button>
+        </div>
       </div>
     );
   }
 }
-export { AddExam };
+const mapStateToProps = (state) => {
+  return {
+    userId: state.signupReducer.userId,
+    firstname: state.signupReducer.firstname,
+    lastname: state.signupReducer.lastname,
+    newExamState: state.examReducer.newExam,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    saveExam: (exam) => dispatch(actions.saveExam(exam)),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(AddExam);

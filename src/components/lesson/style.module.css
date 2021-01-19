@@ -1,4 +1,17 @@
-.container {
-  /* padding: 20px;
-   text-align: center; */
+.item {
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 18px;
+  background-color: aquamarine;
+  margin-top: 5px;
+}
+@media screen and (max-width: 480px) {
+  .item {
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 18px;
+    background-color: cyan;
+    margin: 3px;
+    flex: 1;
+  }
 }

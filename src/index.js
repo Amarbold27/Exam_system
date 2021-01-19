@@ -7,6 +7,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import signupReducer from "./redux/reducers/signupLoginReducer";
+import examReducer from "./redux/reducers/examReducer";
 
 const loggerMiddlaware = (store) => {
   return (next) => {
@@ -24,6 +25,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const reducers = combineReducers({
   signupReducer,
+  examReducer,
 });
 
 const middlewares = [loggerMiddlaware, thunk];

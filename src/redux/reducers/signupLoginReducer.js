@@ -6,6 +6,8 @@ const initialState = {
   token: null,
   //userDetail: null,
   role: null,
+  firstname: "",
+  lastname: "",
 };
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -25,9 +27,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         saving: false,
         // token: action.data.idToken,
-        userId: action.firebaseResData.localId,
+        userId: action.firebaseResData.userId,
         token: action.firebaseResData.idToken,
         role: action.firebaseResData.role,
+        firstname: action.firebaseResData.firstname,
+        lastname: action.firebaseResData.lastname,
       };
     case "LOGIN_START":
       return {
@@ -44,9 +48,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         logginIn: false,
-        userId: action.firebaseResData.localId,
+        userId: action.firebaseResData.userId,
         token: action.firebaseResData.idToken,
         role: action.firebaseResData.role,
+        firstname: action.firebaseResData.firstname,
+        lastname: action.firebaseResData.lastname,
       };
     case "LOGOUT":
       return {

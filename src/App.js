@@ -3,7 +3,7 @@ import { Navbar } from "./components";
 import { ExamContainer } from "./components/exam-container";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import { AddExam } from "./components/add-exam";
+import  AddExam  from "./components/add-exam";
 //import LoginTest from "./components/logintest";
 import Login from "./components/login/index.jsx";
 import SignUpTest from "./components/signuptest";
@@ -29,7 +29,11 @@ function App() {
         <Navbar />
         <Switch>
           {/*<Route path="/" >*/}
-          <Route path="/exam" exact component={ExamContainer} />
+          <Route
+            path="/exam"
+            exact
+            component={() => <ExamContainer lessons={lessons} />}
+          />
           <Route
             path="/eec"
             exact

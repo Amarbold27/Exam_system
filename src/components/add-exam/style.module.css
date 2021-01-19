@@ -1,4 +1,9 @@
 .container {
+  /* border: 1px solid whi; */
+  max-width: 800px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 20px;
   display: grid;
   grid-template-columns: auto, auto, auto, auto, auto;
   grid-template-rows: auto, auto, auto, auto, auto, auto;
@@ -89,4 +94,38 @@
 .inputResUrl {
   grid-column-start: 5;
   grid-column-end: 6;
+}
+.btns {
+  grid-column-start: 5;
+  grid-column-end: 6;
+  grid-row-start: 8;
+  grid-row-end: 9;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.btnClear {
+  margin-right: 10px;
+  padding: 5px 15px;
+  color: white;
+  background-color: #fc7979;
+  border: 1px solid #fc7979;
+  border-radius: 10px;
+}
+.btnClear:hover {
+  color: #fc7979;
+  border: 2px solid #fc7979;
+  background-color: white;
+}
+.btnSave {
+  padding: 5px 15px;
+  color: white;
+  background-color: #5cd679;
+  border: 1px solid #5cd679;
+  border-radius: 10px;
+}
+.btnSave:hover {
+  color: #5cd679;
+  border: 2px solid #5cd679;
+  background-color: white;
 }

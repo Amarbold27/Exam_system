@@ -1,13 +1,14 @@
 .Loader {
-  color: #0d2538;
-  font-size: 90px;
+  color: rgba(255, 115, 0, 1);
+  font-size: 30px;
   text-indent: -9999em;
   overflow: hidden;
   width: 1em;
   height: 1em;
   border-radius: 50%;
-  margin: 72px auto;
+  /* margin: 1px auto; */
   position: relative;
+  z-index: 100;
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);
   transform: translateZ(0);

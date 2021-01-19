@@ -24,7 +24,7 @@ class Login extends Component {
     //console.log("role: " + this.props.role);
     return (
       <div className="login-form">
-        {/*this.props.userId && <Redirect to="/exam" />*/}
+        {this.props.userId && <Redirect to="/exam" />}
         <h3>Нэвтрэх {this.props.role}</h3>
 
         <div className="form-group">

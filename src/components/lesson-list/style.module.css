@@ -1,4 +1,16 @@
 .lesson_list {
-  margin: auto;
-  width: 85vw;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  margin-left: 30px;
+}
+
+@media screen and (max-width: 480px) {
+  .lesson_list {
+    margin: 5px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /*justify-content: space-between;*/
+  }
 }
