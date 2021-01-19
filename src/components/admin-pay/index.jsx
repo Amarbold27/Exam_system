@@ -5,8 +5,10 @@ import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 class AdminPay extends Component {
   state = {
-    email: "",
-    password: "",
+    startDate: "",
+    endDate:"",
+    registerNum:"",
+
   };
 
   changeEmail = (e) => {
@@ -22,53 +24,30 @@ class AdminPay extends Component {
   render() {
     //console.log("role: " + this.props.role);
     return (
-      <div className="login-form">
-        {this.props.userId && <Redirect to="/" />}
-        <h3>Нэвтрэх </h3>
-        <div className="form-group">
+      <div className="admin-form">
           <input
             type="text"
-            className="form-control"
-            onChange={this.changeEmail}
+            onChange={}
+            placeholder="хичээлийн нэр"
             required
           />
-          <label className="anime-label">Нэр</label>
-        </div>
-      
-        <div className="form-group">
           <input
-            type="password"
-            className="form-control"
-            onChange={this.changePassword}
+            type="text"
+            onChange={}
+            placeholder="РД оруул"
             required
           />
-          <label className="anime-label">Нууц үг</label>
+          <input
+            type="text"
+            onChange={}
+            placeholder="Сунгах хугацаа сараар"
+            required
+          />
         </div>
-        {this.props.logginIn && <Spinner />}
-        {this.props.firebaseError && <div>{this.props.firebaseError}</div>}
-        <button type="button" className="btn-reg" onClick={this.login}>
-          <span>Нэвтрэх</span>
-        </button>
-        <p className="forgot-password text-right">
-          Бүртгүүлэх бол <Link to="/signup">Sign up?</Link>
-        </p>
-      </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    logginIn: state.signupReducer.logginIn,
-    firebaseError: state.signupReducer.firebaseError,
-    userId: state.signupReducer.userId,
-    role: state.signupReducer.role,
-  };
-};
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    login: (email, password) => dispatch(actions.login(email, password)),
-  };
-};
-export default connect(mapStateToProps, mapDispatchToProps)(AdminPay);
+
+export default (AdminPay);
