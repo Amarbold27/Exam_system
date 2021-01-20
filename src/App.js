@@ -1,15 +1,16 @@
 import "./App.css";
 import { Navbar } from "./components";
-import { ExamContainer } from "./components/exam-container";
+import ExamContainer from "./components/exam-container";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import  AddExam  from "./components/add-exam";
+import AddExam from "./components/add-exam";
 //import LoginTest from "./components/logintest";
 import Login from "./components/login/index.jsx";
-import SignUpTest from "./components/signuptest";
+//import SignUpTest from "./components/signuptest";
 import LogOut from "./components/LogOut";
 import Register from "./components/register/index";
 import { LessonList } from "./components/lesson-list";
+import HighClassExams from "./components/highclass";
 
 function App() {
   const lessons = [
@@ -39,8 +40,8 @@ function App() {
             exact
             component={() => <LessonList lessons={lessons} />}
           />
-          <Route path="/high-class" exact component={AddExam} />
-          <Route path="/mid-class" exact component={SignUpTest} />
+          <Route path="/high-class" exact component={HighClassExams} />
+          <Route path="/mid-class" exact component={AddExam} />
           <Route path="/log-in" exact component={Login} />
           <Route path="/log-out" exact component={LogOut} />
           <Route path="/signup" exact component={Register} />

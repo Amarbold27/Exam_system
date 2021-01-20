@@ -3,7 +3,8 @@ import style from "./style.module.css";
 //import axios from "axios";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
-import DatePicker from "react-date-picker";
+//import DatePicker from "react-date-picker";
+import DateTimePicker from "react-datetime-picker";
 import TimePicker from "react-time-picker";
 import * as actions from "../../redux/actions/saveExamAction";
 import { connect } from "react-redux";
@@ -91,21 +92,6 @@ class AddExam extends React.Component {
       teacherName: fullname,
     };
     this.props.saveExam(newExam);
-    console.log(
-      "Save exam: ",
-      fullname
-      // this.state.lesson,
-      // this.state.class,
-      // this.state.category,
-      // this.state.price,
-      // this.state.date,
-      // this.state.time,
-      // this.state.duration,
-      // this.state.examUrl,
-      // this.state.calcUrl,
-      // this.state.resUrl,
-      // this.state.description
-    );
   };
   clearFields = () => {
     //console.log("Date: ", this.state.date);
@@ -170,7 +156,7 @@ class AddExam extends React.Component {
           className={style.drpPrice}
         />
         <div className={style.startDate}>Эхлэх өдөр</div>
-        <DatePicker
+        <DateTimePicker
           value={this.state.date}
           onChange={this.onChangeDate}
           className={style.datepicker}

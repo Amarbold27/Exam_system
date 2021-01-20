@@ -1,8 +1,11 @@
 .exam {
   padding: 10px;
   margin: 10px;
-  /*border: 1px solid black;*/
-  min-width: 220px;
+  /*border: 1px solid black;
+  max-width: 180px;*/
+  min-width: 240px;
+  min-height: 160px;
+  max-height: 200px;
   flex: 1;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   display: grid;
@@ -20,11 +23,19 @@
 .title {
   grid-column-start: 1;
   grid-column-end: 4;
-  padding-top: 2vw;
-  padding-bottom: 2vw;
+  padding-top: 1vw;
+  /* padding-bottom: 1vw; */
   font-size: 18px;
   text-align: center;
 }
+.description {
+  grid-column-start: 1;
+  grid-column-end: 4;
+  text-align: center;
+  margin: 0px 2px;
+  font-size: 14px;
+}
+
 .duration {
   grid-column-start: 1;
   grid-column-end: 2;
@@ -58,7 +69,10 @@
   text-align: center;
   font-size: 12px;
   font-weight: bold;
-  padding: 5px 3px;
+  /* padding: 5px 3px; */
+  /* padding-left: 5px;
+  padding-right: 5px; */
+  padding-top: 7px;
   border-top: 1px solid #a8a8a8;
 }
 
@@ -72,6 +86,10 @@
   background-color: #f2f2f2;
 }
 @media screen and (max-width: 800px) {
+  .exam {
+    min-width: 240px;
+    min-height: 100px;
+  }
   .exam .date {
     font-size: 18px;
   }
