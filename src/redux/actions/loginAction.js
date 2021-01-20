@@ -26,8 +26,25 @@ export const login = (email, password) => {
             const idToken = result.data.idToken;
             const arr = Object.values(res.data);
             const obj = arr[0];
+            console.log("______res.data__",obj);
+            const registerNum = obj.register;
+
             const userObject = { ...obj, idToken };
             dispatch(loginSuccess(userObject));
+              axios
+                .get(
+                  `https://exam-system-fb26a-default-rtdb.firebaseio.com/payment.json?orderBy="register"&equalTo="${registerNum}"`        
+                )
+                .then((payRes) =>{
+                   const payArr = Object.entries(payRes.data);
+                    console.log(payArr);
+                   // if(payArr.endDate<=new Date()){
+
+                  // }
+                    //  console.log("_______payment______",payArr);
+                      dispatch(getPayment(payArr[1]));
+                })
+                
           });
         //dispatch(loginSuccess(result.data));
       })
@@ -60,4 +77,11 @@ export const logOut = () => {
   return {
     type: "LOGOUT",
   };
+  
 };
+export const getPayment = (payment) =>{
+  return{
+    type:"GETPAYSUCCESS",
+    payment
+  }
+}

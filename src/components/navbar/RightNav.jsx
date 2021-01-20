@@ -1,5 +1,5 @@
 import React ,  {  useState }from "react";
-import { Link } from "react-router-dom";
+import { Link,Redirect } from "react-router-dom";
 import styled from "styled-components";
 import { Dropdown } from "./dropdown";
 import { SidebarData } from "./SideBarData";
@@ -98,20 +98,24 @@ const RightNav = (props) => {
         })}
        
         <li>
-          {props.userId && (props.role==='admin' || props.role==='teacher') &&(
+          {(props.userId && (props.role==='admin' || props.role==='teacher')) ?(
               <Link to="exam-add" className="link" onClick={props.hideShow} >
                 <AiOutlineFileAdd />
                 <span className="title">СОРИЛ НЭМЭХ</span>
               </Link>
+              ):( 
+                <Redirect to="/log-in" />    
               )
             }
         </li>
         <li>
-          {props.userId && props.role==='admin'  &&(
-              <Link to="exam-add" className="link" onClick={props.hideShow} >
+          {(props.userId && props.role==='admin') ? (
+              <Link to="payment" className="link" onClick={props.hideShow} >
                 <AiOutlineFileAdd />
                 <span className="title">ЭРХ СУНГАХ</span>
               </Link>
+              ) :( 
+                <Redirect to="/log-in" />    
               )
             }
         </li>

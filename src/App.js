@@ -10,6 +10,7 @@ import SignUpTest from "./components/signuptest";
 import LogOut from "./components/LogOut";
 import Register from "./components/register/index";
 import { LessonList } from "./components/lesson-list";
+import adminPay from "./components/admin-pay";
 
 function App() {
   const lessons = [
@@ -44,6 +45,7 @@ function App() {
           <Route path="/log-in" exact component={Login} />
           <Route path="/log-out" exact component={LogOut} />
           <Route path="/signup" exact component={Register} />
+          <Route path="/payment" exact component={adminPay} />
         </Switch>
       </Router>
     </div>
