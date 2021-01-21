@@ -6,24 +6,24 @@ import "react-dropdown/style.css";
 //import DatePicker from "react-date-picker";
 import DateTimePicker from "react-datetime-picker";
 //import TimePicker from "react-time-picker";
-import * as actions from "../../redux/actions/saveExamAction";
+import * as actions from "../../redux/actions/updateExamAction";
 import { connect } from "react-redux";
 import Spinner from "../../components/spinner";
 
-class AddExam extends React.Component {
+class EditExam extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      lesson: "Математик",
-      class: "12",
-      category: "Уралдаант сорил",
-      price: "Үнэгүй",
-      date: new Date(),
-      duration: "100",
-      examUrl: "",
-      calcUrl: "",
-      resUrl: "",
-      description: "",
+      lesson: this.props.editExam.lesson,
+      class: this.props.editExam.class,
+      category: this.props.editExam.category,
+      price: this.props.editExam.price,
+      date: new Date(this.props.editExam.start_date),
+      duration: this.props.editExam.duration,
+      examUrl: this.props.editExam.examUrl,
+      calcUrl: this.props.editExam.calcUrl,
+      resUrl: this.props.editExam.resUrl,
+      description: this.props.editExam.description,
     };
   }
   lessons = [
@@ -57,6 +57,7 @@ class AddExam extends React.Component {
   };
   handleDuration = (e) => {
     this.setState({ duration: e.target.value });
+    console.log("ID n: ", this.props.examId);
   };
   handleExamUrl = (e) => {
     this.setState({ examUrl: e.target.value });
@@ -86,24 +87,9 @@ class AddExam extends React.Component {
       userId: this.props.userId,
       teacherName: fullname,
     };
-    this.props.saveExam(newExam);
+    this.props.updateExam(this.props.examId, newExam);
   };
-  clearFields = () => {
-    //console.log("Date: ", this.state.date);
-    this.setState({
-      lesson: "Математик",
-      class: "12",
-      category: "Уралдаант сорил",
-      price: "Тийм",
-      date: new Date(),
-      duration: "100",
-      examUrl: "",
-      calcUrl: "",
-      resUrl: "",
-      description: "",
-    });
-    //console.log("Finished: ", this.props.newExamState);
-  };
+
   render() {
     return (
       <div className={style.container}>
@@ -196,8 +182,8 @@ class AddExam extends React.Component {
           className={style.descArea}
         ></textarea>
         <div className={style.btns}>
-          <button className={style.btnClear} onClick={this.clearFields}>
-            Цэвэрлэх
+          <button className={style.btnClear} onClick={this.props.closeAction}>
+            Хаах
           </button>
           <button className={style.btnSave} onClick={this.saveExam}>
             Хадгалах
@@ -217,7 +203,7 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    saveExam: (exam) => dispatch(actions.saveExam(exam)),
+    updateExam: (id, exam) => dispatch(actions.updateExam(id, exam)),
   };
 };
-export default connect(mapStateToProps, mapDispatchToProps)(AddExam);
+export default connect(mapStateToProps, mapDispatchToProps)(EditExam);

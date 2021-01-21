@@ -12,6 +12,7 @@ class Login extends Component {
 
   changeEmail = (e) => {
     this.setState({ email: e.target.value });
+   
   };
   changePassword = (e) => {
     this.setState({ password: e.target.value });
@@ -21,10 +22,11 @@ class Login extends Component {
     this.props.login(this.state.email, this.state.password);
   };
   render() {
+    
     //console.log("role: " + this.props.role);
     return (
       <div className="login-form">
-        {this.props.userId && <Redirect to="/" />}
+         {this.props.userId && <Redirect to="/"/>} 
         <h3>Нэвтрэх </h3>
 
         <div className="form-group">
@@ -65,6 +67,7 @@ const mapStateToProps = (state) => {
     firebaseError: state.signupReducer.firebaseError,
     userId: state.signupReducer.userId,
     role: state.signupReducer.role,
+    payment: state.paymentReducer.paymentdata,
   };
 };
 

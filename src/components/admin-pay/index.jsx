@@ -1,74 +1,98 @@
 import React, { Component } from "react";
 import "./admin-pay.css";
-import * as actions from "../../redux/actions/loginAction";
+import Spinner from "../spinner";
+import * as actions from "../../redux/actions/paymentAction";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
+import Dropdown from "react-dropdown";
 class AdminPay extends Component {
   state = {
-    email: "",
-    password: "",
+    startDate: new Date(),
+    endDate:"",
+    registerNum:"",
+    lessonName:"",
+    lessonregister:"",
   };
+  lessons = [
+    "Математик",
+    "Физик",
+    "Хими",
+    "Биологи",
+    "Газар зүй",
+    "Монгол хэл",
+    "Англи хэл",
+    "Түүх",
+    "Нийгэм",
+  ];
 
-  changeEmail = (e) => {
-    this.setState({ email: e.target.value });
+  onChangeLessonName = (e) => {
+    this.setState({ lessonName: e.value });
   };
-  changePassword = (e) => {
-    this.setState({ password: e.target.value });
+  onChangeRegisterNum = (e) => {
+    this.setState({ registerNum: e.target.value });
   };
-
-  login = () => {
-    this.props.login(this.state.email, this.state.password);
+  onChangeEndDate=(e)=>{
+    var theDate = new Date(this.state.startDate.getFullYear(),this.state.startDate.getMonth()+e.target.value,this.state.startDate.getDate()+1);
+    this.setState({endDate:theDate});
+  }
+ 
+  savePayment = () => {
+    const newPayment = {
+      lesson: this.state.lessonName,
+      register: this.state.registerNum,
+      startDate: this.state.startDate,
+      endDate: this.state.endDate,
+      lessonregister: this.state.lessonName+this.state.registerNum,
+    };
+    this.props.savePayment(newPayment);
   };
+ 
   render() {
     //console.log("role: " + this.props.role);
+    
     return (
-      <div className="login-form">
-        {this.props.userId && <Redirect to="/" />}
-        <h3>Нэвтрэх </h3>
-        <div className="form-group">
+      <div className="admin-form">
+        <Dropdown
+          options={this.lessons}
+          onChange={this.onChangeLessonName}
+          value={this.state.lessonName}
+          placeholder="Хичээлээ сонгоно уу?"
+        />
           <input
             type="text"
-            className="form-control"
-            onChange={this.changeEmail}
+            onChange={this.onChangeRegisterNum}
+            placeholder="РД оруул"
             required
           />
-          <label className="anime-label">Нэр</label>
-        </div>
-      
-        <div className="form-group">
           <input
-            type="password"
-            className="form-control"
-            onChange={this.changePassword}
+            type="text"
+            onChange={this.onChangeEndDate}
+            placeholder="Сунгах хугацаа сараар"
             required
           />
-          <label className="anime-label">Нууц үг</label>
+           {this.props.saving && <Spinner />}
+          <button onClick={this.savePayment}>
+            <span>
+              Оруулах
+            </span>
+          </button>
         </div>
-        {this.props.logginIn && <Spinner />}
-        {this.props.firebaseError && <div>{this.props.firebaseError}</div>}
-        <button type="button" className="btn-reg" onClick={this.login}>
-          <span>Нэвтрэх</span>
-        </button>
-        <p className="forgot-password text-right">
-          Бүртгүүлэх бол <Link to="/signup">Sign up?</Link>
-        </p>
-      </div>
     );
   }
 }
 
+
 const mapStateToProps = (state) => {
   return {
-    logginIn: state.signupReducer.logginIn,
-    firebaseError: state.signupReducer.firebaseError,
-    userId: state.signupReducer.userId,
-    role: state.signupReducer.role,
-  };
+    saving: state.paymentReducer.saving,
+    finished: state.paymentReducer.finished,
+    error: state.paymentReducer.error,
+    payment: state.paymentReducer.paymentdata,
+    };
 };
-
 const mapDispatchToProps = (dispatch) => {
   return {
-    login: (email, password) => dispatch(actions.login(email, password)),
+    savePayment: (payment) => dispatch(actions.savePayment(payment)),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(AdminPay);

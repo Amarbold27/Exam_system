@@ -28,6 +28,10 @@ export const SidebarData = [
         title: "Дунд анги",
         path: "/mid-class",
       },
+      {
+        title: "Бага анги",
+        path: "/lower-class",
+      },
     ],
   },
   // {

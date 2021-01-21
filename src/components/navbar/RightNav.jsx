@@ -101,7 +101,7 @@ const RightNav = (props) => {
         <li>
           {props.userId &&
           (props.role === "admin" || props.role === "teacher") ? (
-            <Link to="exam-add" className="link" onClick={props.hideShow}>
+            <Link to="/add-exam" className="link" onClick={props.hideShow}>
               <AiOutlineFileAdd />
               <span className="title">СОРИЛ НЭМЭХ</span>
             </Link>

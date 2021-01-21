@@ -16,7 +16,8 @@ class HighClassExams extends React.Component {
     };
   }
   componentDidMount() {
-    const category = "Дунд анги";
+    //const category = "Дунд анги";
+    const category = this.props.category;
     this.props.loadExam(category);
     //console.log("lessons: ", this.props.lessons);
   }

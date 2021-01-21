@@ -17,7 +17,6 @@ export const login = (email, password) => {
       )
       .then((result) => {
         const userId = result.data.localId;
-
         axios
           .get(
             `https://exam-system-fb26a-default-rtdb.firebaseio.com/users.json?orderBy="userId"&equalTo="${userId}"`
@@ -35,28 +34,29 @@ export const login = (email, password) => {
                 `https://exam-system-fb26a-default-rtdb.firebaseio.com/payment.json?orderBy="register"&equalTo="${registerNum}"`
               )
               .then((payRes) => {
-                //console.log("______payRes___", payRes.data);
                 const payArr = Object.entries(payRes.data);
-                payArr.forEach((el) => {
+                payArr.forEach(function (el, index) {
                   const dd = new Date();
                   const pday = new Date(el[1].endDate);
                   if (pday <= dd) {
-                    //console.log("Ustgah: ", el);
                     const a = el[0];
+                    delete payArr[index];
                     axios
                       .delete(
                         `https://exam-system-fb26a-default-rtdb.firebaseio.com/payment/${a}.json?auth=${idToken}`
                       )
-                      .then((res) => console.log("Ustsan res: ", res))
+                      .then((res) => {
+                        // console.log("Res ", res);
+                        // console.log(res.data);
+                      })
                       .catch((err) => console.log("Ustsan error: ", err));
                   }
                 });
-                //
-                //console.log("_______payment______"+payArr);
-                //  dispatch(getPayment(objs));
+                let newArr = payArr.filter((el) => el !== null);
+                //console.log("Pay arr: ", newArr);
+                dispatch(getPayment(newArr));
               });
           });
-        //dispatch(loginSuccess(result.data));
       })
       .catch((error) => {
         dispatch(loginError(error));
@@ -86,5 +86,11 @@ export const loginError = (error) => {
 export const logOut = () => {
   return {
     type: "LOGOUT",
+  };
+};
+export const getPayment = (payment) => {
+  return {
+    type: "GETPAYSUCCESS",
+    payment,
   };
 };

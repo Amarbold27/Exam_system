@@ -3,7 +3,7 @@
   margin: 10px;
   /*border: 1px solid black;
   max-width: 180px;*/
-  min-width: 240px;
+  min-width: 300px;
   min-height: 160px;
   max-height: 200px;
   flex: 1;
@@ -14,8 +14,10 @@
   border-radius: 5px;
 }
 .date {
+  grid-row-start: 1;
+  grid-row-end: 2;
   grid-column-start: 1;
-  grid-column-end: 4;
+  grid-column-end: 3;
   text-align: left;
   font-size: 16px;
   color: #3b7eeb;
@@ -41,6 +43,12 @@
   grid-column-end: 2;
   text-align: left;
   font-size: 15px;
+}
+.teacherName {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  font-size: 15px;
+  text-align: center;
 }
 .price {
   grid-column-start: 3;
@@ -73,7 +81,7 @@
   /* padding-left: 5px;
   padding-right: 5px; */
   padding-top: 7px;
-  border-top: 1px solid #a8a8a8;
+  border-top: 2px solid rgb(255, 171, 0);
 }
 
 .btnStart:hover {
@@ -84,6 +92,39 @@
 }
 .btnRes:hover {
   background-color: #f2f2f2;
+}
+.icon {
+  margin-top: 2px;
+  color: blue;
+}
+.timeLimit {
+  grid-column-start: 1;
+  grid-column-end: 4;
+  background-color: #f2f2f2;
+  text-align: center;
+}
+.btnPay {
+  grid-column-start: 1;
+  grid-column-end: 4;
+  color: white;
+  background: rgb(255, 171, 0);
+  background: linear-gradient(
+    72deg,
+    rgba(255, 171, 0, 1) 0%,
+    rgba(255, 141, 0, 1) 52%,
+    rgba(255, 115, 0, 1) 100%
+  );
+  border: 1px solid rgb(255, 171, 0);
+  border-radius: 5px;
+  font-size: 15px;
+  min-height: 30px;
+}
+.btnEdit {
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  text-align: right;
 }
 @media screen and (max-width: 800px) {
   .exam {
