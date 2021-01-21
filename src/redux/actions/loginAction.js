@@ -28,7 +28,6 @@ export const login = (email, password) => {
             const obj = arr[0];
             console.log("______res.data__",obj);
             const registerNum = obj.register;
-
             const userObject = { ...obj, idToken };
             dispatch(loginSuccess(userObject));
               axios

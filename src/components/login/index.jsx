@@ -12,7 +12,6 @@ class Login extends Component {
 
   changeEmail = (e) => {
     this.setState({ email: e.target.value });
-   
   };
   changePassword = (e) => {
     this.setState({ password: e.target.value });
@@ -28,7 +27,7 @@ class Login extends Component {
       <div className="login-form">
          {this.props.userId && <Redirect to="/" />} 
         <h3>Нэвтрэх </h3>
-
+       
         <div className="form-group">
           <input
             type="text"
@@ -50,12 +49,14 @@ class Login extends Component {
         </div>
         {this.props.logginIn && <Spinner />}
         {this.props.firebaseError && <div>{this.props.firebaseError}</div>}
+        <p> <Link to="/reset">Forget password</Link></p>
         <button type="button" className="btn-reg" onClick={this.login}>
           <span>Нэвтрэх</span>
         </button>
         <p className="forgot-password text-right">
           Бүртгүүлэх бол <Link to="/signup">Sign up?</Link>
         </p>
+        
       </div>
     );
   }
