@@ -1,24 +1,10 @@
 import React, { Component } from "react";
 import "./admin-pay.css";
 import * as actions from "../../redux/actions/paymentAction";
-<<<<<<< HEAD
-//import { Link, Redirect } from "react-router-dom";
-=======
->>>>>>> 21481371f8cb75515e0c65ac4a076596294cf281
 import { connect } from "react-redux";
 import { Alert } from "react-st-modal";
 
-
 class AdminPay extends Component {
-<<<<<<< HEAD
-  state = {
-    startDate: new Date(),
-    endDate: "",
-    registerNum: "",
-    lessonName: "",
-    lessonregister: "",
-  };
-=======
   constructor(props) {
     super(props);
     this.state = {
@@ -30,7 +16,6 @@ class AdminPay extends Component {
     };
   }
 
->>>>>>> 21481371f8cb75515e0c65ac4a076596294cf281
   lessons = [
     "Математик",
     "Физик",
@@ -42,10 +27,10 @@ class AdminPay extends Component {
     "Түүх",
     "Нийгэм",
   ];
-  handelChangeSelect= (e) =>{
+  handelChangeSelect = (e) => {
     this.setState({ lessonName: e.target.value });
-  }
- 
+  };
+
   onChangeRegisterNum = (e) => {
     this.setState({ registerNum: e.target.value });
   };
@@ -68,22 +53,21 @@ class AdminPay extends Component {
     };
     this.props.savePayment(newPayment);
   };
-<<<<<<< HEAD
 
   render() {
-    //console.log("role: " + this.props.role);
-
-=======
-  render() {
->>>>>>> 21481371f8cb75515e0c65ac4a076596294cf281
     return (
       <div className="admin-form">
-      <select className="admin-select" value={this.state.lessonName}  onChange={this.handelChangeSelect} > 
-        {this.lessons.map(el =>
-        <option className="admin-options" key={el} value={el}>{el}</option>
-        )}
-      </select>
-     
+        <select
+          className="admin-select"
+          value={this.state.lessonName}
+          onChange={this.handelChangeSelect}
+        >
+          {this.lessons.map((el) => (
+            <option className="admin-options" key={el} value={el}>
+              {el}
+            </option>
+          ))}
+        </select>
         <input
           type="text"
           onChange={this.onChangeRegisterNum}
@@ -93,40 +77,23 @@ class AdminPay extends Component {
         />
         <input
           type="text"
-<<<<<<< HEAD
-          onChange={this.onChangeRegisterNum}
-          placeholder="РД оруул"
-          required
-        />
-        <input
-          type="text"
-          onChange={this.onChangeEndDate}
-          placeholder="Сунгах хугацаа сараар"
-          required
-        />
-        {this.props.saving && <Spinner />}
-        <button onClick={this.savePayment}>
-          <span>Оруулах</span>
-        </button>
-=======
           onChange={this.onChangeEndDate}
           placeholder="Сунгах хугацаа сараар"
           className="admin-input1"
           required
         />
-
         {(this.state.lessonName == null ||
           this.state.endDate == null ||
           this.state.registerNum == null) && (
-            <button
-              className="admin-btn-reg"
-              onClick={async () => {
-                await Alert("Амжилтгүй боллоо", "Бүртгэл");
-              }}
-            >
-              <span>Оруулах</span>
-            </button>
-          )}
+          <button
+            className="admin-btn-reg"
+            onClick={async () => {
+              await Alert("Амжилтгүй боллоо", "Бүртгэл");
+            }}
+          >
+            <span>Оруулах</span>
+          </button>
+        )}
         {this.state.lessonName != null &&
           this.state.endDate != null &&
           this.state.registerNum != null && (
@@ -134,7 +101,6 @@ class AdminPay extends Component {
               <span>Оруулах</span>
             </button>
           )}
->>>>>>> 21481371f8cb75515e0c65ac4a076596294cf281
       </div>
     );
   }
@@ -145,10 +111,7 @@ const mapStateToProps = (state) => {
     saving: state.paymentReducer.saving,
     finished: state.paymentReducer.finished,
     error: state.paymentReducer.error,
-<<<<<<< HEAD
-    payment: state.paymentReducer.paymentdata,
-=======
->>>>>>> 21481371f8cb75515e0c65ac4a076596294cf281
+    //payment: state.paymentReducer.paymentdata,
   };
 };
 const mapDispatchToProps = (dispatch) => {

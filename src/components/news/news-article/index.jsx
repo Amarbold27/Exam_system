@@ -27,7 +27,7 @@ class News extends React.Component {
         const newsdb = data.find(
           (el) => el[0] === this.props.match.params.newsId
         );
-        console.log("News: ", newsdb);
+        //console.log("News: ", newsdb);
         this.setState({ newsItem: newsdb[1] });
         this.setState({ newsContent: this.state.newsItem.content });
       });

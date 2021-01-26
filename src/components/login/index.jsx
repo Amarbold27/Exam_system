@@ -25,30 +25,6 @@ class Login extends Component {
   render() {
     //console.log("role: " + this.props.role);
     return (
-<<<<<<< HEAD
-      <div className="login-form">
-        {this.props.userId && <Redirect to="/" />}
-        <h3>Нэвтрэх </h3>
-
-        <div className="form-group">
-          <input
-            type="text"
-            className="form-control"
-            onChange={this.changeEmail}
-            required
-          />
-          <label className="anime-label">Нэр</label>
-        </div>
-
-        <div className="form-group">
-          <input
-            type="password"
-            className="form-control"
-            onChange={this.changePassword}
-            required
-          />
-          <label className="anime-label">Нууц үг</label>
-=======
       <IconContext.Provider value={{ className: "icons" }}>
         <div className="login-form">
           {this.props.userId && <Redirect to="/" />}
@@ -106,7 +82,6 @@ class Login extends Component {
           <p className="forgot-password text-right">
             Бүртгүүлэх бол <Link to="/signup">Sign up?</Link>
           </p>
->>>>>>> 21481371f8cb75515e0c65ac4a076596294cf281
         </div>
       </IconContext.Provider>
     );
