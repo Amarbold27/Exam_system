@@ -1,25 +1,15 @@
 .container {
-  /* border: 1px solid whi; */
-
-  margin-bottom:0;
-  min-width: 1000px;
-  border-radius: 5px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  padding: 20px;
-  display: grid;
-  grid-template-columns: auto, auto, auto, auto, auto;
-  grid-template-rows: auto, auto, auto, auto, auto, auto;
-  column-gap: 10px;
-  row-gap: 15px;
-  width: 70vw;
-  margin:auto;
-  margin-top: 40px;
-}
-.addSelect{
-
-  height: 27px;
-  cursor: pointer;
-  outline-color:  rgb(255, 171, 0);
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 20px;
+    display: grid;
+    grid-template-columns: auto, auto, auto, auto, auto;
+    grid-template-rows: auto, auto, auto, auto, auto, auto;
+    column-gap: 10px;
+    row-gap: 15px;
+    margin: auto;
+    min-width: 200px;
+   
 }
 .lesson {
   grid-column-start: 1;
@@ -61,7 +51,6 @@
 .datepicker {
   grid-column-start: 2;
   grid-column-end: 3;
-  
 }
 .duration {
   grid-column-start: 4;
@@ -127,6 +116,7 @@
   color: #fc7979;
   border: 2px solid #fc7979;
   background-color: white;
+  
 }
 .btnSave {
   padding: 5px 15px;
@@ -134,16 +124,18 @@
   background-color: #5cd679;
   border: 1px solid #5cd679;
   border-radius: 10px;
+
 }
 .btnSave:hover {
   color: #5cd679;
   border: 2px solid #5cd679;
   background-color: white;
 }
-
 @media only screen and (max-width: 1100px){
   .container{
-    margin-top: 100px;
-    margin-bottom:10px;
+    display:flex;
+    flex-direction: column;
+    
   }
 }
+

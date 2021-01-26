@@ -1,0 +1,132 @@
+.reset-form {
+    background: rgb(243, 233, 236);
+    display: flex;
+    align-items: center;
+    width: 300px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 40px;
+    box-shadow: 0px 0px 20px 0px #000000;
+    text-decoration: none;
+}
+.reset-title{
+    font-weight: 800;
+    font-size: 25px;
+    height: 30%;
+    padding-top: 20%;
+    font-style: bold; 
+  }
+  .reset-form-group {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    height: 30px;
+  }
+  
+  .reset-form-control {
+    width: 250px;
+    height: 30px;
+    outline: none;
+    border: none;
+    margin-top: 30px;
+    background-color: rgb(243, 233, 236);
+    border-bottom: 2px solid rgb(78, 74, 74);
+    -webkit-transition: border-bottom 2s;
+    -moz-transition: border-bottom 2s;
+    -ms-transition: border-bottom 2s;
+    -o-transition: border-bottom 2s;
+    transition: border-bottom 3s;
+  }
+  
+  .reset-form-control:focus-within {
+    transition: height 0.3s, width 0.3s 0.1s;
+  }
+  
+  .reset-anime-label {
+    transition: 0.2s ease all;
+    margin-top: -30px;
+    margin-left: 5px;
+    font-style: italic;
+    /*position: static;*/
+    width: 0;
+  }
+  .reset-form-control:hover,
+  .reset-anime-label:hover {
+    cursor: pointer;
+  }
+  .reset-form-control:focus {
+    border-bottom: 3px solid rgb(255, 171, 0);
+    -webkit-transition: border-bottom 1s;
+    -moz-transition: border-bottom 1s;
+    -ms-transition: border-bottom 1s;
+    -o-transition: border-bottom 1s;
+    transition: border-bottom 1s;
+    font-style: inherit;
+    cursor: pointer;
+  }
+  .reset-form-control:required:valid ~ .reset-anime-label {
+    margin-top: -40px;
+    width: auto;
+    font-style: inherit;
+    color: #0b8bc2;
+    opacity: 1;
+    color: rgb(255, 171, 0);
+    color: linear-gradient(
+      72deg,
+      rgba(255, 171, 0, 1) 0%,
+      rgba(255, 141, 0, 1) 52%,
+      rgba(255, 115, 0, 1) 100%
+    );
+  }
+  .reset-form-control:focus:required:invalid ~ .reset-anime-label {
+    margin-top: -40px;
+    font-style: inherit;
+    width: auto;
+  }
+  .reset-btn-reg {
+    margin-top: 40px;
+    width: 250px;
+    height: 30px;
+    cursor: pointer;
+  }
+  
+  .reset-btn-reg {
+    color: #fff;
+    transition: all 0.3s;
+    outline: none;
+    background: rgb(255, 171, 0);
+    background: linear-gradient(
+      72deg,
+      rgba(255, 171, 0, 1) 0%,
+      rgba(255, 141, 0, 1) 52%,
+      rgba(255, 115, 0, 1) 100%
+    );
+    border: none;
+  }
+  .reset-btn-reg span {
+    transition: all 0.3s;
+  }
+  .reset-btn-reg:hover span {
+    letter-spacing: 2px;
+  }
+  
+  .reset-btn-reg::after {
+    content: "";
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    transition: all 0.5s;
+    background-color: rgba(255, 245, 245, 0.1);
+  }
+  .reset-btn-reg:hover::after {
+    opacity: 0;
+    transform: scale(0.1, 3);
+   
+  }
+  
+  

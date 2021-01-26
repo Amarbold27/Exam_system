@@ -40,11 +40,6 @@ const initialState = {
             error: action.error,
           },
         };
-        case "GETPAYSUCCESS":
-          return {
-            ...state,
-            paymentdata: action.payment,
-          }
       default:
         return state;
     }

@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import "./reset.css";
 import * as actions from "../../redux/actions/resetAction";
-import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import axios from "axios";
 class Reset extends Component {
     state = {
         email: "",
@@ -17,22 +15,20 @@ class Reset extends Component {
   };
     render(){
     return (
-      <div className="login-form">
-        <h3>Нэвтрэх </h3>
+      <div className="reset-form">
+        <h3 className="reset-title">НУУЦ ҮГ СЭРГЭЭХ</h3>
 
-        <div className="form-group">
+        <div className="reset-form-group">
           <input
             type="text"
-            className="form-control"
+            className="reset-form-control"
             onChange={this.changeEmail}
             required
           />
-          <label className="anime-label">Нэр</label>
+          <label className="reset-anime-label">Имэйл</label>
         </div>
-
-        <p> <Link to="/signup">Бүртгүүлэх</Link></p>
-        <button type="button" className="btn-reg" onClick={this.reset}>
-          <span>Нэвтрэх</span>
+        <button type="button" className="reset-btn-reg" onClick={this.reset}>
+          <span>ИЛГЭЭХ</span>
         </button>
       </div>
     );

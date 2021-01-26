@@ -1,25 +1,29 @@
 import React from "react";
 import style from "./style.module.css";
+//import axios from "axios";
+import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
+//import DatePicker from "react-date-picker";
 import DateTimePicker from "react-datetime-picker";
-import * as actions from "../../redux/actions/saveExamAction";
+//import TimePicker from "react-time-picker";
+import * as actions from "../../redux/actions/updateExamAction";
 import { connect } from "react-redux";
 import Spinner from "../../components/spinner";
 
-class AddExam extends React.Component {
+class EditExam extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      lesson: "Математик",
-      class: "12",
-      category: "Уралдаант сорил",
-      price: "Үнэгүй",
-      date: new Date(),
-      duration: "100",
-      examUrl: "",
-      calcUrl: "",
-      resUrl: "",
-      description: "",
+      lesson: this.props.editExam.lesson,
+      class: this.props.editExam.class,
+      category: this.props.editExam.category,
+      price: this.props.editExam.price,
+      date: new Date(this.props.editExam.start_date),
+      duration: this.props.editExam.duration,
+      examUrl: this.props.editExam.examUrl,
+      calcUrl: this.props.editExam.calcUrl,
+      resUrl: this.props.editExam.resUrl,
+      description: this.props.editExam.description,
     };
   }
   lessons = [
@@ -33,33 +37,19 @@ class AddExam extends React.Component {
     "Түүх",
     "Нийгэм",
   ];
-  classes = [
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "10",
-    "11",
-    "12",
-  ];
   category = ["Уралдаант сорил", "ЭЕШ", "Ахлах анги", "Дунд анги", "Бага анги"];
   //options = ["one", "two", "three"];
   onSelectLesson = (e) => {
-    this.setState({ lesson: e.target.value });
+    this.setState({ lesson: e.value });
   };
   onSelectClass = (e) => {
-    this.setState({ class: e.target.value });
+    this.setState({ class: e.value });
   };
   onSelectCategory = (e) => {
-    this.setState({ category: e.target.value });
+    this.setState({ category: e.value });
   };
   onSelectPrice = (e) => {
-    this.setState({ price: e.target.value });
+    this.setState({ price: e.value });
   };
   onChangeDate = (value) => {
     this.setState({ date: value });
@@ -67,6 +57,7 @@ class AddExam extends React.Component {
   };
   handleDuration = (e) => {
     this.setState({ duration: e.target.value });
+    console.log("ID n: ", this.props.examId);
   };
   handleExamUrl = (e) => {
     this.setState({ examUrl: e.target.value });
@@ -96,51 +87,54 @@ class AddExam extends React.Component {
       userId: this.props.userId,
       teacherName: fullname,
     };
-    this.props.saveExam(newExam);
+    this.props.updateExam(this.props.examId, newExam);
   };
-  clearFields = () => {
-    //console.log("Date: ", this.state.date);
-    this.setState({
-      lesson: "Математик",
-      class: "12",
-      category: "Уралдаант сорил",
-      price: "Тийм",
-      date: new Date(),
-      duration: "100",
-      examUrl: "",
-      calcUrl: "",
-      resUrl: "",
-      description: "",
-    });
-    //console.log("Finished: ", this.props.newExamState);
-  };
+
   render() {
     return (
       <div className={style.container}>
         <div className={style.lesson}>Хичээл</div>
-        <select className={style.addSelect} value={this.state.lesson}  onChange={this.onSelectLesson} > 
-        {this.lessons.map(les =>
-        <option className="admin-options"  value={les}>{les}</option>
-        )}
-      </select>
-   
+        <Dropdown
+          options={this.lessons}
+          onChange={this.onSelectLesson}
+          value={this.state.lesson}
+          className={style.drpLesson}
+        />
         <div className={style.class}>Анги</div>
-        <select className={style.addSelect} value={this.state.class}  onChange={this.onSelectClass} > 
-          {this.classes.map(val=>
-            <option className="admin-options"  value={val}>{val}</option>
-          )}
-      </select>
+        <Dropdown
+          options={[
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+          ]}
+          onChange={this.onSelectClass}
+          value={this.state.class} //
+          className={style.drpClass}
+        />
         <div className={style.category}>Төрөл</div>
-        <select className={style.addSelect} value={this.state.category}  onChange={this.onSelectCategory} > 
-          {this.category.map(val=>
-            <option className="admin-options"  value={val}>{val}</option>
-          )}
-      </select>
+        <Dropdown
+          options={this.category}
+          onChange={this.onSelectCategory}
+          value={this.state.category}
+          className={style.drpCategory}
+        />
         <div className={style.price}>Төлбөртэй эсэх</div>
-        <select className={style.addSelect} value={this.state.price}  onChange={this.onSelectPrice} > 
-          <option className="admin-options"  value="Төлбөртэй">Төлбөртэй</option>
-          <option className="admin-options"  value="Үнэгүй">Үнэгүй</option>
-      </select>
+        <Dropdown
+          options={["Төлбөртэй", "Үнэгүй"]}
+          onChange={this.onSelectPrice}
+          value={this.state.price}
+          placeholder="Төлбартэй эсэх"
+          className={style.drpPrice}
+        />
         <div className={style.startDate}>Эхлэх өдөр</div>
         <DateTimePicker
           value={this.state.date}
@@ -188,8 +182,8 @@ class AddExam extends React.Component {
           className={style.descArea}
         ></textarea>
         <div className={style.btns}>
-          <button className={style.btnClear} onClick={this.clearFields}>
-            Цэвэрлэх
+          <button className={style.btnClear} onClick={this.props.closeAction}>
+            Хаах
           </button>
           <button className={style.btnSave} onClick={this.saveExam}>
             Хадгалах
@@ -209,7 +203,7 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    saveExam: (exam) => dispatch(actions.saveExam(exam)),
+    updateExam: (id, exam) => dispatch(actions.updateExam(id, exam)),
   };
 };
-export default connect(mapStateToProps, mapDispatchToProps)(AddExam);
+export default connect(mapStateToProps, mapDispatchToProps)(EditExam);

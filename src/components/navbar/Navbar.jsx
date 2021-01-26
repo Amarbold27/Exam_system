@@ -4,7 +4,13 @@ import Burger from "./Burger";
 //border-bottom: 2px solid #f1f1f1;  background: #3367d6;
 const Nav = styled.nav`
   width: 100%;
+  min-width:320px;
   height: 70px;
+  -moz-transition: height 1s ease;
+  -webkit-transition: height 1s ease;
+  -o-transition: height 1s ease;
+  transition: height 1s ease;
+    
   background: rgb(255, 171, 0);
   background: linear-gradient(
     72deg,
@@ -24,9 +30,21 @@ const Nav = styled.nav`
   justify-content: space-between;
   .logo {
   }
+  @media only screen and (max-width: 1100px) {
+    position: fixed;
+    flex:1;
+    right:0;
+    height: 52px;
+    -moz-transition: height 1s ease;
+  -webkit-transition: height 1s ease;
+  -o-transition: height 1s ease;
+  transition: height 1s ease;
+    
+  }
 `;
 
 const Navbar = () => {
+  console.log(window.screen.width)
   return (
     <Nav>
       {<div className="logo">Nav Bar</div>}

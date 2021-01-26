@@ -11,7 +11,7 @@ export const savePayment = (payment) => {
       )
       .then((response) => {
         dispatch(PayActionSuccess());
-        console.log("Response: ", response);
+        //console.log("Response: ", response);
       })
       .catch((err) => dispatch(PayActionError(err)));
   };

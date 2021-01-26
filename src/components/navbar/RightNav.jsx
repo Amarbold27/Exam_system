@@ -1,13 +1,17 @@
-import React ,  {  useState }from "react";
-import { Link,Redirect } from "react-router-dom";
+import React from "react";
+import { Link, Redirect } from "react-router-dom";
 import styled from "styled-components";
 import { Dropdown } from "./dropdown";
 import { SidebarData } from "./SideBarData";
 import "./rightnav.css";
 import { IconContext } from "react-icons/lib";
-import { IoLogInOutline, IoLogOutOutline ,AiOutlineFileAdd} from "react-icons/all";
+import {
+  IoLogInOutline,
+  IoLogOutOutline,
+  AiOutlineFileAdd,
+  FiUser
+} from "react-icons/all";
 import { connect } from "react-redux";
-//#0d2538
 const Ul = styled.ul`
   list-style: none;
   display: flex;
@@ -20,9 +24,8 @@ const Ul = styled.ul`
     margin-top: 18px;
     margin-right: 20px;
   }
-
-  @media (max-width: 1000px) {
-    
+  
+  @media (max-width: 1100px) {
     margin-top: 0;
     flex-flow: column nowrap;
     background-color: #f2f6f7;
@@ -32,28 +35,33 @@ const Ul = styled.ul`
     left: 0;
     display: ${({ open }) => (open ? "block" : "none")};
     height: 100%;
-    width: 70vw;
+    width: 250px;
     padding-top: 3.5rem;
-   
+
     transition: margin-right 2s ease-in-out 1s;
     li {
       color: #20547d;
-      &:nth-child(1) {
-        position: absolute;
-        top: 10%;
+
+      &:nth-child(1){
+        margin-bottom:0;
       }
       &:nth-child(2) {
+        margin-top:0;
         position: absolute;
-        top: 15%;
         z-index: 1;
+       
       }
       &:nth-child(3) {
-        margin-top: 110px;
-        margin-bottom:0;
+        margin-top:40px;
+        margin-bottom: 0;
         z-index: 1;
       }
       &:nth-child(4) {
-        margin-top:0;
+        margin-top: 0;
+        z-index: 1;
+      }
+      &:nth-child(5) {
+        margin-top: 0;
         z-index: 1;
       }
       &:last-child {
@@ -63,15 +71,16 @@ const Ul = styled.ul`
     }
   }
 `;
-
 const RightNav = (props) => {
- 
   //console.log(open);
- 
-    return (
-    
+  if(window.innerWidth>1100 ){
+    if(props.open===true)
+    props.hideShow();
+  }
+
+  return (
     <IconContext.Provider value={{ className: "icons" }}>
-      <Ul open={props.open} >
+      <Ul open={props.open}>
         {SidebarData.map((el) => {
           return (
             <li>
@@ -85,41 +94,50 @@ const RightNav = (props) => {
                   {el.icon}
                   <span className="title">{el.title}</span>
                 </Link>
-              ) : (
+              ) : props.userId&&(
                 <Dropdown
                   key={el.title}
                   className="drp"
                   item={el}
                   hide={props.hideShow}
+                  open={props.open}
                 />
               )}
             </li>
           );
         })}
-       
+
         <li>
-          {(props.userId && (props.role==='admin' || props.role==='teacher')) ?(
-              <Link to="exam-add" className="link" onClick={props.hideShow} >
-                <AiOutlineFileAdd />
-                <span className="title">СОРИЛ НЭМЭХ</span>
-              </Link>
-              ):( 
-                <Redirect to="/log-in" />    
-              )
-            }
+          {props.userId &&
+          (props.role === "admin" || props.role === "teacher") ? (
+            <Link to="/add-exam" className="link" onClick={props.hideShow}>
+              <AiOutlineFileAdd />
+              <span className="title">СОРИЛ НЭМЭХ</span>
+            </Link>
+          ) : (
+            <Redirect to="/log-in" />
+          )}
         </li>
         <li>
-          {(props.userId && props.role==='admin') ? (
-              <Link to="payment" className="link" onClick={props.hideShow} >
-                <AiOutlineFileAdd />
-                <span className="title">ЭРХ СУНГАХ</span>
-              </Link>
-              ) :( 
-                <Redirect to="/log-in" />    
-              )
-            }
+          {props.userId && props.role === "admin" ? (
+            <Link to="payment" className="link" onClick={props.hideShow}>
+              <AiOutlineFileAdd />
+              <span className="title">ЭРХ СУНГАХ</span>
+            </Link>
+          ) : (
+            <Redirect to="/log-in" />
+          )}
         </li>
         <li>
+       {props.userId &&
+        <Link to="/add-exam" className="link" onClick={props.hideShow}>
+              <FiUser/>
+              <span className="title">{props.lastname.substr(0,1)+". "+props.firstname}</span>
+            </Link>
+        }
+            </li>
+        <li>
+          
           {props.userId ? (
             <Link to="log-out" className="link" onClick={props.hideShow}>
               <IoLogOutOutline />
@@ -140,8 +158,9 @@ const mapStateToProps = (state) => {
   return {
     userId: state.signupReducer.userId,
     role: state.signupReducer.role,
+    firstname:state.signupReducer.firstname,
+    lastname:state.signupReducer.lastname,
   };
 };
-
 
 export default connect(mapStateToProps)(RightNav);

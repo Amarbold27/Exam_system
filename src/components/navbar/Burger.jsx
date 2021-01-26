@@ -2,18 +2,34 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import RightNav from "./RightNav";
 import { connect } from "react-redux";
+let windowHeight= window.screen.height;
+const BlurDiv = styled.div`
+@media (max-width: 1100px){
+position:absolute;
+top:52px;
+left:290px;
+right:0;
+display:flex;
+flex:1;
+height:${windowHeight}px;
+background-color:black;
+opacity:0.5;
+
+}
+`;
 const StyledBurger = styled.div`
-  width: 2rem;
-  height: 2rem;
+  width: 25px;
+  height: 2em;
   position: fixed;
   top: 12px;
-  right: 20px;
   display: none;
-  @media (max-width: 1000px) {
+  right:20px;
+  @media (max-width: 1100px) {
     display: flex;
     justify-content: space-around;
     flex-flow: column nowrap;
   }
+ 
   div {
     width: 2rem;
     height: 0.25rem;
@@ -36,15 +52,10 @@ const StyledBurger = styled.div`
 
 const Burger = (props) => {
   const [open, setOpen] = useState(false);
-  //console.log(open); () => setOpen(!open)
-  //const [toggle, setToggle] = useState(false);
   const fff = () => {
     setOpen(!open);
   };
- 
-  //console.log(open); () => setOpen(!open)
-  //const [toggle, setToggle] = useState(false);
- 
+
   return (
     <>
      
@@ -53,7 +64,8 @@ const Burger = (props) => {
         <div />
         <div />
       </StyledBurger>
-      <RightNav open={open} hideShow={fff} />
+      <BlurDiv style={{display:open?"block":"none"}}/>
+      <RightNav open={open} hideShow={fff}  />
     </>
   );
 };
