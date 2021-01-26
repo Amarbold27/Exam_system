@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, Redirect } from "react-router-dom";
 import styled from "styled-components";
 import { Dropdown } from "./dropdown";
@@ -87,19 +87,21 @@ const RightNav = (props) => {
                   <span className="title">{el.title}</span>
                 </Link>
               ) : (
-                <Dropdown
-                  key={el.title}
-                  className="drp"
-                  item={el}
-                  hide={props.hideShow}
-                />
+                props.userId && (
+                  <Dropdown
+                    key={el.title}
+                    className="drp"
+                    item={el}
+                    hide={props.hideShow}
+                  />
+                )
               )}
             </li>
           );
         })}
 
         <li>
-          {props.userId &&
+          {/* {props.userId &&
           (props.role === "admin" || props.role === "teacher") ? (
             <Link to="/add-exam" className="link" onClick={props.hideShow}>
               <AiOutlineFileAdd />
@@ -107,17 +109,17 @@ const RightNav = (props) => {
             </Link>
           ) : (
             <Redirect to="/log-in" />
-          )}
+          )} */}
         </li>
         <li>
-          {props.userId && props.role === "admin" ? (
+          {/* {props.userId && props.role === "admin" ? (
             <Link to="payment" className="link" onClick={props.hideShow}>
               <AiOutlineFileAdd />
               <span className="title">ЭРХ СУНГАХ</span>
             </Link>
           ) : (
             <Redirect to="/log-in" />
-          )}
+          )} */}
         </li>
         <li>
           {props.userId ? (

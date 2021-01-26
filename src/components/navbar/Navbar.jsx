@@ -15,12 +15,11 @@ const Nav = styled.nav`
 
   color: #f1f1f1;
   font-size: 16px;
-  position: sticky;
-  top: 0;
+
   margin: 0;
   display: flex;
   flex-direction: row;
-  
+
   justify-content: space-between;
   .logo {
   }

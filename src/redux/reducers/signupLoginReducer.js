@@ -36,12 +36,12 @@ const reducer = (state = initialState, action) => {
     case "LOGIN_START":
       return {
         ...state,
-        loginIn: true,
+        logginIn: true,
       };
     case "LOGIN_ERROR":
       return {
         ...state,
-        loginIn: false,
+        logginIn: false,
         firebaseError: action.error.response.data.error.message,
       };
     case "LOGIN_SUCCESS":

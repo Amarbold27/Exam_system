@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import * as actions from "./getUserInfoAction";
 export const login = (email, password) => {
   return function (dispatch) {
     dispatch(loginStart());
@@ -17,46 +17,14 @@ export const login = (email, password) => {
       )
       .then((result) => {
         const userId = result.data.localId;
-        axios
-          .get(
-            `https://exam-system-fb26a-default-rtdb.firebaseio.com/users.json?orderBy="userId"&equalTo="${userId}"`
-          )
-          .then((res) => {
-            //console.log("Result: ", res);
-            const idToken = result.data.idToken;
-            const arr = Object.values(res.data);
-            const obj = arr[0];
-            const registerNum = obj.register;
-            const userObject = { ...obj, idToken };
-            dispatch(loginSuccess(userObject));
-            axios
-              .get(
-                `https://exam-system-fb26a-default-rtdb.firebaseio.com/payment.json?orderBy="register"&equalTo="${registerNum}"`
-              )
-              .then((payRes) => {
-                const payArr = Object.entries(payRes.data);
-                payArr.forEach(function (el, index) {
-                  const dd = new Date();
-                  const pday = new Date(el[1].endDate);
-                  if (pday <= dd) {
-                    const a = el[0];
-                    delete payArr[index];
-                    axios
-                      .delete(
-                        `https://exam-system-fb26a-default-rtdb.firebaseio.com/payment/${a}.json?auth=${idToken}`
-                      )
-                      .then((res) => {
-                        // console.log("Res ", res);
-                        // console.log(res.data);
-                      })
-                      .catch((err) => console.log("Ustsan error: ", err));
-                  }
-                });
-                let newArr = payArr.filter((el) => el !== null);
-                //console.log("Pay arr: ", newArr);
-                dispatch(getPayment(newArr));
-              });
-          });
+        const idToken = result.data.idToken;
+        const expiresIn = result.data.expiresIn;
+        const expireDate = new Date(new Date().getTime() + expiresIn * 1000);
+        localStorage.setItem("token", idToken);
+        localStorage.setItem("userId", userId);
+        localStorage.setItem("expireDate", expireDate);
+        localStorage.setItem("expiresIn", expiresIn);
+        dispatch(actions.getUserInfo(userId, idToken));
       })
       .catch((error) => {
         dispatch(loginError(error));
@@ -70,12 +38,12 @@ export const loginStart = () => {
   };
 };
 
-export const loginSuccess = (firebaseResData) => {
-  return {
-    type: "LOGIN_SUCCESS",
-    firebaseResData,
-  };
-};
+// export const loginSuccess = (firebaseResData) => {
+//   return {
+//     type: "LOGIN_SUCCESS",
+//     firebaseResData,
+//   };
+// };
 
 export const loginError = (error) => {
   return {
@@ -84,13 +52,24 @@ export const loginError = (error) => {
   };
 };
 export const logOut = () => {
+  localStorage.removeItem("token");
+  localStorage.removeItem("userId");
+  localStorage.removeItem("expireDate");
   return {
     type: "LOGOUT",
   };
 };
-export const getPayment = (payment) => {
-  return {
-    type: "GETPAYSUCCESS",
-    payment,
+
+export const autoLogOut = (timems) => {
+  return function (dispatch) {
+    setTimeout(() => {
+      dispatch(logOut());
+    }, timems);
   };
 };
+// export const getPayment = (payment) => {
+//   return {
+//     type: "GETPAYSUCCESS",
+//     payment,
+//   };
+// };

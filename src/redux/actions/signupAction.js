@@ -16,10 +16,12 @@ export const signup = (email, password, userDetail) => {
         data
       )
       .then((result) => {
-        userDetail.userId = result.data.localId;
+        const userId = result.data.localId;
+        userDetail.userId = userId;
         const token = result.data.idToken;
         //console.log("token: ", token);
         userDetail.idToken = token;
+
         axios
           .post(
             `https://exam-system-fb26a-default-rtdb.firebaseio.com/users.json?auth=${token}`,
@@ -27,6 +29,8 @@ export const signup = (email, password, userDetail) => {
           )
           .then((res) => {
             //const userInfo = { ...result.data, ...userDetail };
+            localStorage.setItem("token", token);
+            localStorage.setItem("userId", userId);
             dispatch(signupSuccess(userDetail));
           })
           .catch((err) => {

@@ -9,7 +9,7 @@ import reportWebVitals from "./reportWebVitals";
 import signupReducer from "./redux/reducers/signupLoginReducer";
 import examReducer from "./redux/reducers/examReducer";
 import paymentReducer from "./redux/reducers/paymentReducers";
-
+import newsReducer from "./redux/reducers/newsReducer";
 const loggerMiddlaware = (store) => {
   return (next) => {
     return (action) => {
@@ -28,6 +28,7 @@ const reducers = combineReducers({
   signupReducer,
   examReducer,
   paymentReducer,
+  newsReducer,
 });
 
 const middlewares = [loggerMiddlaware, thunk];
