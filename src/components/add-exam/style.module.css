@@ -1,6 +1,8 @@
 .container {
   /* border: 1px solid whi; */
-  max-width: 800px;
+
+  margin-bottom:0;
+  min-width: 1000px;
   border-radius: 5px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   padding: 20px;
@@ -10,8 +12,14 @@
   column-gap: 10px;
   row-gap: 15px;
   width: 70vw;
-  margin: auto;
-  margin-top: 50px;
+  margin:auto;
+  margin-top: 40px;
+}
+.addSelect{
+
+  height: 27px;
+  cursor: pointer;
+  outline-color:  rgb(255, 171, 0);
 }
 .lesson {
   grid-column-start: 1;
@@ -53,6 +61,7 @@
 .datepicker {
   grid-column-start: 2;
   grid-column-end: 3;
+  
 }
 .duration {
   grid-column-start: 4;
@@ -130,4 +139,11 @@
   color: #5cd679;
   border: 2px solid #5cd679;
   background-color: white;
+}
+
+@media only screen and (max-width: 1100px){
+  .container{
+    margin-top: 100px;
+    margin-bottom:10px;
+  }
 }

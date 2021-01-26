@@ -9,9 +9,9 @@ import {
   IoLogInOutline,
   IoLogOutOutline,
   AiOutlineFileAdd,
+  FiUser
 } from "react-icons/all";
 import { connect } from "react-redux";
-//#0d2538
 const Ul = styled.ul`
   list-style: none;
   display: flex;
@@ -24,8 +24,8 @@ const Ul = styled.ul`
     margin-top: 18px;
     margin-right: 20px;
   }
-
-  @media (max-width: 1000px) {
+  
+  @media (max-width: 1100px) {
     margin-top: 0;
     flex-flow: column nowrap;
     background-color: #f2f6f7;
@@ -35,27 +35,32 @@ const Ul = styled.ul`
     left: 0;
     display: ${({ open }) => (open ? "block" : "none")};
     height: 100%;
-    width: 70vw;
+    width: 250px;
     padding-top: 3.5rem;
 
     transition: margin-right 2s ease-in-out 1s;
     li {
       color: #20547d;
-      &:nth-child(1) {
-        position: absolute;
-        top: 10%;
+
+      &:nth-child(1){
+        margin-bottom:0;
       }
       &:nth-child(2) {
+        margin-top:0;
         position: absolute;
-        top: 15%;
         z-index: 1;
+       
       }
       &:nth-child(3) {
-        margin-top: 110px;
+        margin-top:40px;
         margin-bottom: 0;
         z-index: 1;
       }
       &:nth-child(4) {
+        margin-top: 0;
+        z-index: 1;
+      }
+      &:nth-child(5) {
         margin-top: 0;
         z-index: 1;
       }
@@ -66,9 +71,12 @@ const Ul = styled.ul`
     }
   }
 `;
-
 const RightNav = (props) => {
   //console.log(open);
+  if(window.innerWidth>1100 ){
+    if(props.open===true)
+    props.hideShow();
+  }
 
   return (
     <IconContext.Provider value={{ className: "icons" }}>
@@ -86,6 +94,7 @@ const RightNav = (props) => {
                   {el.icon}
                   <span className="title">{el.title}</span>
                 </Link>
+<<<<<<< HEAD
               ) : (
                 props.userId && (
                   <Dropdown
@@ -95,6 +104,16 @@ const RightNav = (props) => {
                     hide={props.hideShow}
                   />
                 )
+=======
+              ) : props.userId&&(
+                <Dropdown
+                  key={el.title}
+                  className="drp"
+                  item={el}
+                  hide={props.hideShow}
+                  open={props.open}
+                />
+>>>>>>> 21481371f8cb75515e0c65ac4a076596294cf281
               )}
             </li>
           );
@@ -122,6 +141,15 @@ const RightNav = (props) => {
           )} */}
         </li>
         <li>
+       {props.userId &&
+        <Link to="/add-exam" className="link" onClick={props.hideShow}>
+              <FiUser/>
+              <span className="title">{props.lastname.substr(0,1)+". "+props.firstname}</span>
+            </Link>
+        }
+            </li>
+        <li>
+          
           {props.userId ? (
             <Link to="log-out" className="link" onClick={props.hideShow}>
               <IoLogOutOutline />
@@ -142,6 +170,8 @@ const mapStateToProps = (state) => {
   return {
     userId: state.signupReducer.userId,
     role: state.signupReducer.role,
+    firstname:state.signupReducer.firstname,
+    lastname:state.signupReducer.lastname,
   };
 };
 

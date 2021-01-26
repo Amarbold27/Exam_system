@@ -13,6 +13,7 @@
   background-color: #f5fcfc;
   border-radius: 5px;
 }
+
 .date {
   grid-row-start: 1;
   grid-row-end: 2;
@@ -124,7 +125,9 @@
   grid-column-end: 4;
   grid-row-start: 1;
   grid-row-end: 2;
-  text-align: right;
+  text-align: center;
+  margin:auto;
+  width:70px;
 }
 @media screen and (max-width: 800px) {
   .exam {
@@ -146,4 +149,12 @@
   .price {
     font-size: 17px;
   }
+}
+@media screen and (max-width: 480px) {
+  .exam {
+    min-width: 240px;
+    min-height: 100px;
+    margin-top:10px;
+  }
+
 }

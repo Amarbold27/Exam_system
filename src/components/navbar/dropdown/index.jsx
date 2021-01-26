@@ -7,10 +7,22 @@ export const Dropdown = (props) => {
   const [show, setShow] = useState(false);
   const toggleBtn = () => {
     setShow(!show);
+    // props.hide();
   };
+  const[allShow,setAllshow]=useState(false);
+  const toggleAllShow = () =>{
+    if(props.open===false){
+      toggleBtn();
+    }
+    else if(props.open===true)
+            props.hide();
+            setAllshow(!allShow);
+            toggleBtn();
+  }
+  let href=window.location.pathname;
   return (
     <div className={css.drp}>
-      <Link to={props.item.path} className={css.drpBtn} onClick={toggleBtn}>
+      <Link to={href} className={css.drpBtn} onClick={toggleBtn}>
         {props.item.icon}
         <span className="title">{props.item.title}</span>
         {show ? <RiArrowUpSFill /> : <RiArrowDownSFill />}
@@ -22,8 +34,7 @@ export const Dropdown = (props) => {
               to={el.path}
               key={index}
               className={css.drpTitle}
-              //onClick={props.hide}
-              onClick={toggleBtn}
+              onClick={toggleAllShow}
             >
               {el.title}
             </Link>

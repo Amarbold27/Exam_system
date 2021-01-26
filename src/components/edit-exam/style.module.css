@@ -1,17 +1,15 @@
 .container {
-  /* border: 1px solid whi; */
-  /* max-width: 800px;
     border-radius: 5px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    padding: 20px; */
-  display: grid;
-  grid-template-columns: auto, auto, auto, auto, auto;
-  grid-template-rows: auto, auto, auto, auto, auto, auto;
-  column-gap: 10px;
-  row-gap: 15px;
-  /*width: 70vw;*/
-  margin: auto;
-  /* margin-top: 50px; */
+    padding: 20px;
+    display: grid;
+    grid-template-columns: auto, auto, auto, auto, auto;
+    grid-template-rows: auto, auto, auto, auto, auto, auto;
+    column-gap: 10px;
+    row-gap: 15px;
+    margin: auto;
+    min-width: 200px;
+   
 }
 .lesson {
   grid-column-start: 1;
@@ -118,6 +116,7 @@
   color: #fc7979;
   border: 2px solid #fc7979;
   background-color: white;
+  
 }
 .btnSave {
   padding: 5px 15px;
@@ -125,9 +124,18 @@
   background-color: #5cd679;
   border: 1px solid #5cd679;
   border-radius: 10px;
+
 }
 .btnSave:hover {
   color: #5cd679;
   border: 2px solid #5cd679;
   background-color: white;
 }
+@media only screen and (max-width: 1100px){
+  .container{
+    display:flex;
+    flex-direction: column;
+    
+  }
+}
+

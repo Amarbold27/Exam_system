@@ -1,11 +1,7 @@
 import React from "react";
 import style from "./style.module.css";
-//import axios from "axios";
-import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
-//import DatePicker from "react-date-picker";
 import DateTimePicker from "react-datetime-picker";
-//import TimePicker from "react-time-picker";
 import * as actions from "../../redux/actions/saveExamAction";
 import { connect } from "react-redux";
 import Spinner from "../../components/spinner";
@@ -37,19 +33,33 @@ class AddExam extends React.Component {
     "Түүх",
     "Нийгэм",
   ];
+  classes = [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11",
+    "12",
+  ];
   category = ["Уралдаант сорил", "ЭЕШ", "Ахлах анги", "Дунд анги", "Бага анги"];
   //options = ["one", "two", "three"];
   onSelectLesson = (e) => {
-    this.setState({ lesson: e.value });
+    this.setState({ lesson: e.target.value });
   };
   onSelectClass = (e) => {
-    this.setState({ class: e.value });
+    this.setState({ class: e.target.value });
   };
   onSelectCategory = (e) => {
-    this.setState({ category: e.value });
+    this.setState({ category: e.target.value });
   };
   onSelectPrice = (e) => {
-    this.setState({ price: e.value });
+    this.setState({ price: e.target.value });
   };
   onChangeDate = (value) => {
     this.setState({ date: value });
@@ -108,47 +118,29 @@ class AddExam extends React.Component {
     return (
       <div className={style.container}>
         <div className={style.lesson}>Хичээл</div>
-        <Dropdown
-          options={this.lessons}
-          onChange={this.onSelectLesson}
-          value={this.state.lesson}
-          className={style.drpLesson}
-        />
+        <select className={style.addSelect} value={this.state.lesson}  onChange={this.onSelectLesson} > 
+        {this.lessons.map(les =>
+        <option className="admin-options"  value={les}>{les}</option>
+        )}
+      </select>
+   
         <div className={style.class}>Анги</div>
-        <Dropdown
-          options={[
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-          ]}
-          onChange={this.onSelectClass}
-          value={this.state.class} //
-          className={style.drpClass}
-        />
+        <select className={style.addSelect} value={this.state.class}  onChange={this.onSelectClass} > 
+          {this.classes.map(val=>
+            <option className="admin-options"  value={val}>{val}</option>
+          )}
+      </select>
         <div className={style.category}>Төрөл</div>
-        <Dropdown
-          options={this.category}
-          onChange={this.onSelectCategory}
-          value={this.state.category}
-          className={style.drpCategory}
-        />
+        <select className={style.addSelect} value={this.state.category}  onChange={this.onSelectCategory} > 
+          {this.category.map(val=>
+            <option className="admin-options"  value={val}>{val}</option>
+          )}
+      </select>
         <div className={style.price}>Төлбөртэй эсэх</div>
-        <Dropdown
-          options={["Төлбөртэй", "Үнэгүй"]}
-          onChange={this.onSelectPrice}
-          value={this.state.price}
-          placeholder="Төлбартэй эсэх"
-          className={style.drpPrice}
-        />
+        <select className={style.addSelect} value={this.state.price}  onChange={this.onSelectPrice} > 
+          <option className="admin-options"  value="Төлбөртэй">Төлбөртэй</option>
+          <option className="admin-options"  value="Үнэгүй">Үнэгүй</option>
+      </select>
         <div className={style.startDate}>Эхлэх өдөр</div>
         <DateTimePicker
           value={this.state.date}

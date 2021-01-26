@@ -4,10 +4,15 @@
   margin-top: 10px;
   margin-left: 30px;
 }
-
+@media screen and (max-width: 1100px) {
+  .lesson_list {
+    margin-top:50px;  
+  }
+}
 @media screen and (max-width: 480px) {
   .lesson_list {
     margin: 5px;
+    margin-top:70px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

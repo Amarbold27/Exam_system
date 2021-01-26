@@ -17,12 +17,13 @@
 .icons {
   vertical-align: middle;
   margin-bottom: 3px;
+  
 }
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1100px) {
   .link {
     color: #20547d;
-    
   }
+
   .icons {
     color: rgba(255, 115, 0, 1);
   }

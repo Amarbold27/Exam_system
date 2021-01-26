@@ -9,7 +9,11 @@ import reportWebVitals from "./reportWebVitals";
 import signupReducer from "./redux/reducers/signupLoginReducer";
 import examReducer from "./redux/reducers/examReducer";
 import paymentReducer from "./redux/reducers/paymentReducers";
+<<<<<<< HEAD
 import newsReducer from "./redux/reducers/newsReducer";
+=======
+import resetReducer from "./redux/reducers/resetReducer";
+>>>>>>> 21481371f8cb75515e0c65ac4a076596294cf281
 const loggerMiddlaware = (store) => {
   return (next) => {
     return (action) => {
@@ -28,7 +32,11 @@ const reducers = combineReducers({
   signupReducer,
   examReducer,
   paymentReducer,
+<<<<<<< HEAD
   newsReducer,
+=======
+  resetReducer,
+>>>>>>> 21481371f8cb75515e0c65ac4a076596294cf281
 });
 
 const middlewares = [loggerMiddlaware, thunk];
