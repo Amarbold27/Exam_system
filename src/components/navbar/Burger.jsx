@@ -14,7 +14,6 @@ flex:1;
 height:${windowHeight}px;
 background-color:black;
 opacity:0.5;
-
 }
 `;
 const StyledBurger = styled.div`
@@ -75,5 +74,4 @@ const mapStateToProps = (state) => {
     role: state.signupReducer.role,
   };
 };
-
 export default connect(mapStateToProps)(Burger);

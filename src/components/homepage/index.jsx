@@ -1,13 +1,14 @@
 import React from "react";
-//import css from "./style.module.css";
+import  "./style.css";
 import NewsList from "../news/news-list";
-
+import Footer from "../footer/index";
 const Home = (props) => {
   return (
-    <div>
-      Home page
+    <div className="home-container">
       <NewsList />
+      <Footer/>
     </div>
+    
   );
 };
 export default Home;

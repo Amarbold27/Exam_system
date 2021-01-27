@@ -87,10 +87,10 @@ class Exam extends React.Component {
             style={{
               overlay: {
                 position: 'fixed',
-                top: 0,
+                top: '40px',
                 left: 0,
                 right: 0,
-                bottom: 0,
+                bottom: '50px',
                 backgroundColor: 'rgba(255, 255, 255, 0.75)'
               },
               content: {

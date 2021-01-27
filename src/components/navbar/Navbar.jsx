@@ -10,7 +10,7 @@ const Nav = styled.nav`
   -webkit-transition: height 1s ease;
   -o-transition: height 1s ease;
   transition: height 1s ease;
-    
+  z-index:1;
   background: rgb(255, 171, 0);
   background: linear-gradient(
     72deg,
@@ -18,14 +18,13 @@ const Nav = styled.nav`
     rgba(255, 141, 0, 1) 52%,
     rgba(255, 115, 0, 1) 100%
   );
-
   color: #f1f1f1;
   font-size: 16px;
-
+  position: sticky;
+  top: 0;
   margin: 0;
   display: flex;
   flex-direction: row;
-
   justify-content: space-between;
   .logo {
   }

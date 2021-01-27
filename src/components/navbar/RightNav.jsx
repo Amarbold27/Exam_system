@@ -9,7 +9,7 @@ import {
   IoLogInOutline,
   IoLogOutOutline,
   AiOutlineFileAdd,
-  FiUser,
+  FiUser
 } from "react-icons/all";
 import { connect } from "react-redux";
 const Ul = styled.ul`
@@ -18,13 +18,12 @@ const Ul = styled.ul`
   flex-flow: row nowrap;
   margin-top: 0px;
   height: 100%;
-
   li {
     text-align: center;
     margin-top: 18px;
     margin-right: 20px;
   }
-
+  
   @media (max-width: 1100px) {
     margin-top: 0;
     flex-flow: column nowrap;
@@ -37,21 +36,20 @@ const Ul = styled.ul`
     height: 100%;
     width: 250px;
     padding-top: 3.5rem;
-
     transition: margin-right 2s ease-in-out 1s;
     li {
       color: #20547d;
-
-      &:nth-child(1) {
-        margin-bottom: 0;
+      &:nth-child(1){
+        margin-bottom:0;
       }
       &:nth-child(2) {
-        margin-top: 0;
+        margin-top:0;
         position: absolute;
         z-index: 1;
+       
       }
       &:nth-child(3) {
-        margin-top: 40px;
+        margin-top:40px;
         margin-bottom: 0;
         z-index: 1;
       }
@@ -72,10 +70,13 @@ const Ul = styled.ul`
 `;
 const RightNav = (props) => {
   //console.log(open);
-  if (window.innerWidth > 1100) {
-    if (props.open === true) props.hideShow();
+  if(window.innerWidth>1100 ){
+    if(props.open===true)
+    props.hideShow();
   }
-
+  let href=window.location.pathname;
+  let hrefLenght = href.length;
+  console.log("pathname_______",hrefLenght);
   return (
     <IconContext.Provider value={{ className: "icons" }}>
       <Ul open={props.open}>
@@ -92,16 +93,14 @@ const RightNav = (props) => {
                   {el.icon}
                   <span className="title">{el.title}</span>
                 </Link>
-              ) : (
-                props.userId && (
-                  <Dropdown
-                    key={el.title}
-                    className="drp"
-                    item={el}
-                    hide={props.hideShow}
-                    open={props.open}
-                  />
-                )
+              ) : props.userId&&(
+                <Dropdown
+                  key={el.title}
+                  className="drp"
+                  item={el}
+                  hide={props.hideShow}
+                  open={props.open}
+                />
               )}
             </li>
           );
@@ -114,9 +113,10 @@ const RightNav = (props) => {
               <AiOutlineFileAdd />
               <span className="title">СОРИЛ НЭМЭХ</span>
             </Link>
-          ) : (
-            <Redirect to="/log-in" />
-          )}
+          ) : (hrefLenght<15)&&( 
+              <Redirect to="/" /> 
+            )
+        }
         </li>
         <li>
           {props.userId && props.role === "admin" ? (
@@ -124,21 +124,20 @@ const RightNav = (props) => {
               <AiOutlineFileAdd />
               <span className="title">ЭРХ СУНГАХ</span>
             </Link>
-          ) : (
-            <Redirect to="/log-in" />
+          ) :(hrefLenght<15) && (
+            <Redirect to="/" />
           )}
         </li>
         <li>
-          {props.userId && (
-            <Link to="/add-exam" className="link" onClick={props.hideShow}>
-              <FiUser />
-              <span className="title">
-                {props.lastname.substr(0, 1) + ". " + props.firstname}
-              </span>
+       {props.userId &&
+        <Link to="/add-exam" className="link" onClick={props.hideShow}>
+              <FiUser/>
+              <span className="title">{props.lastname.substr(0,1)+". "+props.firstname}</span>
             </Link>
-          )}
-        </li>
+        }
+            </li>
         <li>
+          
           {props.userId ? (
             <Link to="log-out" className="link" onClick={props.hideShow}>
               <IoLogOutOutline />
@@ -159,8 +158,8 @@ const mapStateToProps = (state) => {
   return {
     userId: state.signupReducer.userId,
     role: state.signupReducer.role,
-    firstname: state.signupReducer.firstname,
-    lastname: state.signupReducer.lastname,
+    firstname:state.signupReducer.firstname,
+    lastname:state.signupReducer.lastname,
   };
 };
 

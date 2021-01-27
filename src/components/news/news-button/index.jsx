@@ -25,9 +25,10 @@ class NewsButton extends React.Component {
       background-repeat: no-repeat;
       background-size: cover;
       height: 200px;
+      margin-top:0.5em;
+      margin-bottom:0.5em;
       width: 300px;
       color: white;
-      background-color: #fad7d7;
       display: flex;
       box-shadow: rgba(14, 14, 14, 0.6) 0 -120px 90px -20px inset;
       background-repeat: no-repeat;
