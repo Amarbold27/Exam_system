@@ -18,13 +18,17 @@
 
 @media screen and (max-width: 600px) {
   .exam-list {
+    margin-top:50px;
     width: 98vw;
   }
 }
 
-@media screen and (max-width: 600px) {
+
+@media screen and (max-width: 480px) {
   .exam-list {
     margin-top:10px;
+    width: 98vw;
   }
 }
+
 

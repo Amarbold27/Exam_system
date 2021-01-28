@@ -5,7 +5,7 @@ import Log from '../../svgfiles/Anonymous-Time-icon.svg';
 //border-bottom: 2px solid #f1f1f1;  background: #3367d6;
 const Nav = styled.nav`
   width: 100%;
-  min-width:320px;
+  min-width:280px;
   height: 70px;
   -moz-transition: height 1s ease;
   -webkit-transition: height 1s ease;

@@ -29,8 +29,8 @@ class Exam extends React.Component {
       showPayBtn: false,
       showTimeInfo: false,
       showBtnEdit: false,
-
       modalIsOpen: false,
+      modalIsOpen1:false,
     };
   }
   componentDidMount = () => {
@@ -61,12 +61,18 @@ class Exam extends React.Component {
   closeModal = () => {
     this.setState({ modalIsOpen: false });
   };
+  openModal1 = () => {
+    this.setState({ modalIsOpen1: true });
+  };
 
+  closeModal1 = () => {
+    this.setState({ modalIsOpen1: false });
+  };
   ////
   render() {
     return (
       <IconContext.Provider
-        value={{ color: "#3B7EEB", style: { margin: "2px" } }}
+        value={{   color: "#304b8e", style: { marginTop: "1px" } }}
       >
         <div className={style.exam}>
           <div className={style.date}>
@@ -166,8 +172,48 @@ class Exam extends React.Component {
             </Fragment>
           )}
           {this.state.showPayBtn && (
-            <button className={style.btnPay}>Төлбөр төлөх</button>
+            <button className={style.btnPay} onClick={this.openModal1}>Төлбөр төлөх</button>
           )}
+           <Modal
+            isOpen={this.state.modalIsOpen1}
+            //onAfterOpen={afterOpenModal}
+            onRequestClose={this.closeModal1}
+            style={customStyles}
+            contentLabel="Example Modal"
+            style={{
+              overlay: {
+                position: "fixed",
+                top: "40px",
+                margin:"auto",
+                bottom: "50px",
+                backgroundColor: "rgba(255, 255, 255, 0.75)",
+              },
+              content: {
+                position: "absolute",
+                top: "40px",
+                left: "10%",
+                right: "10%",
+                bottom: "40px",
+                border: "1px solid #ccc",
+                background: "#fff",
+                overflow: "auto",
+                WebkitOverflowScrolling: "touch",
+                borderRadius: "4px",
+                outline: "none",
+                padding: "20px",
+              },
+            }}
+          >
+           <h3>Төлбөр төлөх</h3>
+           <p>Эрхэм хэрэглэгч <span className={style.boldtext}> {this.props.firstName}</span> та  <span className={style.boldtext}>
+              {this.props.exam.lesson}- ын </span>
+            хичээлийн шалгалтын төлбөрийг төлсөнөөр шалгалт өгөх эрх тань нээгдэх болно.
+            </p>
+            <p>Төлбөр төлхийг хүсвэл доорх дансны дугаар руу </p>
+            <p className={style.bankNumber}>Хаан банк: </p>
+            <p className={style.bankNumber}>Голомт банк: </p>
+            <span className={style.redtext}>Гүйлгээний утга: {this.props.register} {this.props.exam.lesson} Холбоо барих утасны дугаар</span> 
+            </Modal>
           {this.state.showTimeInfo && (
             <span className={style.timeLimit}>Эхлэх хугацаа болоогүй.</span>
           )}
@@ -183,6 +229,8 @@ const mapStateToProps = (state) => {
   return {
     payments: paymentLesson,
     teacherId: state.signupReducer.userId,
+    register:state.signupReducer.register,
+    firstName:state.signupReducer.firstname,
   };
 };
 export default connect(mapStateToProps)(Exam);

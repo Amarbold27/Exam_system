@@ -8,6 +8,7 @@ const initialState = {
   role: null,
   firstname: "",
   lastname: "",
+  register:"",
 };
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -53,6 +54,7 @@ const reducer = (state = initialState, action) => {
         role: action.firebaseResData.role,
         firstname: action.firebaseResData.firstname,
         lastname: action.firebaseResData.lastname,
+        register: action.firebaseResData.register,
       };
     case "LOGOUT":
       return {
