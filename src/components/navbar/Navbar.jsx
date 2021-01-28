@@ -1,9 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Burger from "./Burger";
-import { GrDocumentTime } from "react-icons/gr";
-import { IconContext } from "react-icons/lib";
-// import css from "./";
+import Log from "../../svgfiles/Anonymous-Time-icon.svg";
 //border-bottom: 2px solid #f1f1f1;  background: #3367d6;
 const Nav = styled.nav`
   width: 100%;
@@ -29,17 +27,11 @@ const Nav = styled.nav`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
   .logo {
     display: flex;
     align-items: center;
-    font-size: 20px;
+    font-family: Tahoma, Verdana, sans-serif;
     font-weight: bold;
-    font-family: Tahoma, Verdana, Sans-serif;
-    margin-left: 10px;
-  }
-  .webtitle {
-    margin-left: 5px;
   }
   @media only screen and (max-width: 1100px) {
     position: fixed;
@@ -56,15 +48,15 @@ const Nav = styled.nav`
 const Navbar = () => {
   console.log(window.screen.width);
   return (
-    <IconContext.Provider value={{ color: "white" }}>
-      <Nav>
+    <Nav>
+      {
         <div className="logo">
-          <GrDocumentTime style={{ fill: "white" }} />
-          <span className="webtitle">Эрин үе</span>
+          <img height={40} src={Log} alt="logo" />
+          <span>ЭРИН ҮЕ</span>
         </div>
-        <Burger />
-      </Nav>
-    </IconContext.Provider>
+      }
+      <Burger />
+    </Nav>
   );
 };
 

@@ -143,7 +143,7 @@ class Exam extends React.Component {
                 className={style.btnStart}
                 href={this.props.exam.examUrl}
                 target="_blank"
-                //rel="noreferrer"
+                rel="noreferrer"
               >
                 Эхлэх
               </a>
@@ -151,7 +151,7 @@ class Exam extends React.Component {
                 className={style.btnCalc}
                 href={this.props.exam.calcUrl}
                 target="_blank"
-                //rel="noreferrer"
+                rel="noreferrer"
               >
                 Бодолт
               </a>
@@ -159,7 +159,7 @@ class Exam extends React.Component {
                 className={style.btnRes}
                 href={this.props.exam.resUrl}
                 target="_blank"
-                //rel="noreferrer"
+                rel="noreferrer"
               >
                 Дүн харах
               </a>

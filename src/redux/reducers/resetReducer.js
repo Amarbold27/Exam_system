@@ -30,7 +30,7 @@ const initialState = {
           },
         };
   
-      case "ESETSAVE_ERROR":
+      case "RESETSAVE_ERROR":
         return {
           ...state,
           newReset: {
