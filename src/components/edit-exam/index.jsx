@@ -89,7 +89,10 @@ class EditExam extends React.Component {
     };
     this.props.updateExam(this.props.examId, newExam);
   };
-
+  componentDidMount = () => {
+    this.props.finishedFalse();
+    console.log("Exam state: ", this.props.newExamState);
+  };
   render() {
     return (
       <div className={style.container}>
@@ -149,7 +152,9 @@ class EditExam extends React.Component {
           className={style.inputDuration}
           placeholder="Үргэлжлэх хугацаа минутаар."
         />
-        {this.props.newExamState.saving && <Spinner />}
+        {/* {this.props.newExamState.saving && (
+          <Spinner className={style.spinner} />
+        )} */}
         <div className={style.examUrl}>Шалгалтын холбоос</div>
         <input
           type="text"
@@ -181,6 +186,15 @@ class EditExam extends React.Component {
           onChange={this.handleDescription}
           className={style.descArea}
         ></textarea>
+        {this.props.newExamState.saving && (
+          <div className={style.spinner}>
+            <Spinner />
+          </div>
+        )}
+        {this.props.newExamState.finished && (
+          <span className={style.stateSuccess}>Амжилттай хадгаллаа</span>
+        )}
+        {/* <span className={style.stateSuccess}>Амжилттай хадгаллаа</span> */}
         <div className={style.btns}>
           <button className={style.btnClear} onClick={this.props.closeAction}>
             Хаах
@@ -204,6 +218,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     updateExam: (id, exam) => dispatch(actions.updateExam(id, exam)),
+    finishedFalse: () => dispatch(actions.finishedFalse()),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(EditExam);

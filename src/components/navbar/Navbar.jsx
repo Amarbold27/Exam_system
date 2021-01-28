@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Burger from "./Burger";
+import Log from '../../svgfiles/Anonymous-Time-icon.svg';
 //border-bottom: 2px solid #f1f1f1;  background: #3367d6;
 const Nav = styled.nav`
   width: 100%;
@@ -27,6 +28,8 @@ const Nav = styled.nav`
   flex-direction: row;
   justify-content: space-between;
   .logo {
+    display:flex;
+    align-items:center;
   }
   @media only screen and (max-width: 1100px) {
     position: fixed;
@@ -44,7 +47,10 @@ const Navbar = () => {
   console.log(window.screen.width)
   return (
     <Nav>
-      {<div className="logo">Nav Bar</div>}
+      {<div className="logo">
+        <img height={40} src={Log} alt="logo"/> 
+        <span>ЭРИН ҮЕ</span>
+        </div>}
       <Burger />
     </Nav>
   );

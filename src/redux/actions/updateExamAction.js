@@ -11,7 +11,8 @@ export const updateExam = (id, exam) => {
       )
       .then((response) => {
         dispatch(saveActionSuccess());
-        console.log("Response: ", response);
+        //dispatch(finishedFalse());
+        // console.log("Response: ", response);
       })
       .catch((err) => dispatch(saveActionError(err)));
   };
@@ -32,5 +33,10 @@ export const saveActionError = (error) => {
   return {
     type: "SAVE_ERROR",
     error,
+  };
+};
+export const finishedFalse = () => {
+  return {
+    type: "FINISHED_FALSE",
   };
 };

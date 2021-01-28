@@ -77,8 +77,7 @@ class Exam extends React.Component {
               <AiOutlineEdit />
             </button>
           )}
-          <Modal 
-       
+          <Modal
             isOpen={this.state.modalIsOpen}
             //onAfterOpen={afterOpenModal}
             onRequestClose={this.closeModal}
@@ -86,27 +85,27 @@ class Exam extends React.Component {
             contentLabel="Example Modal"
             style={{
               overlay: {
-                position: 'fixed',
-                top: '40px',
+                position: "fixed",
+                top: "40px",
                 left: 0,
                 right: 0,
-                bottom: '50px',
-                backgroundColor: 'rgba(255, 255, 255, 0.75)'
+                bottom: "50px",
+                backgroundColor: "rgba(255, 255, 255, 0.75)",
               },
               content: {
-                position: 'absolute',
-                top: '40px',
-                left: '40px',
-                right: '40px',
-                bottom: '40px',
-                border: '1px solid #ccc',
-                background: '#fff',
-                overflow: 'auto',
-                WebkitOverflowScrolling: 'touch',
-                borderRadius: '4px',
-                outline: 'none',
-                padding: '20px'
-              }
+                position: "absolute",
+                top: "40px",
+                left: "40px",
+                right: "40px",
+                bottom: "40px",
+                border: "1px solid #ccc",
+                background: "#fff",
+                overflow: "auto",
+                WebkitOverflowScrolling: "touch",
+                borderRadius: "4px",
+                outline: "none",
+                padding: "20px",
+              },
             }}
           >
             {/* <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2> */}
@@ -140,13 +139,28 @@ class Exam extends React.Component {
           </span>
           {this.state.show3btn && (
             <Fragment>
-              <a className={style.btnStart} href={this.props.exam.exam_url}>
+              <a
+                className={style.btnStart}
+                href={this.props.exam.examUrl}
+                target="_blank"
+                //rel="noreferrer"
+              >
                 Эхлэх
               </a>
-              <a className={style.btnCalc} href={this.props.exam.exam_url}>
+              <a
+                className={style.btnCalc}
+                href={this.props.exam.calcUrl}
+                target="_blank"
+                //rel="noreferrer"
+              >
                 Бодолт
               </a>
-              <a className={style.btnRes} href={this.props.exam.exam_url}>
+              <a
+                className={style.btnRes}
+                href={this.props.exam.resUrl}
+                target="_blank"
+                //rel="noreferrer"
+              >
                 Дүн харах
               </a>
             </Fragment>
