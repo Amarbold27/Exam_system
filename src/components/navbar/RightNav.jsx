@@ -76,7 +76,7 @@ const RightNav = (props) => {
   }
   let href=window.location.pathname;
   let hrefLenght = href.length;
-  console.log("pathname_______",hrefLenght);
+  console.log("pathname_______",href);
   return (
     <IconContext.Provider value={{ className: "icons" }}>
       <Ul open={props.open}>
@@ -113,7 +113,7 @@ const RightNav = (props) => {
               <AiOutlineFileAdd />
               <span className="title">СОРИЛ НЭМЭХ</span>
             </Link>
-          ) : (hrefLenght<15)&&( 
+          ) : (hrefLenght<15 && href!="/reset")&&( 
               <Redirect to="/" /> 
             )
         }
@@ -124,7 +124,7 @@ const RightNav = (props) => {
               <AiOutlineFileAdd />
               <span className="title">ЭРХ СУНГАХ</span>
             </Link>
-          ) :(hrefLenght<15) && (
+          ) :(hrefLenght<15 && href!="/reset") && (
             <Redirect to="/" />
           )}
         </li>

@@ -37,7 +37,6 @@ const Nav = styled.nav`
   -webkit-transition: height 1s ease;
   -o-transition: height 1s ease;
   transition: height 1s ease;
-    
   }
 `;
 

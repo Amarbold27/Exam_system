@@ -60,9 +60,10 @@ class App extends React.Component {
             <Route path="/log-in" exact component={Login} />
             <Route path="/log-out" exact component={LogOut} />
             <Route path="/signup" exact component={Register} />
+            <Route path="/reset" exact component={Reset} />
             <Route path="/:newsId" component={News} />
             <Route path="/" exact component={Home} />
-            <Route path="/reset" exact component={Reset} />
+            
           </Switch>
         </Router>
       </div>
