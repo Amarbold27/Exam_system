@@ -63,11 +63,19 @@ const examReducer = (state = initialState, action) => {
           error: action.error,
         },
       };
-      case "GET_LESSON_EXAM":
-        return {
-          ...state,
-          lessonName: action.lessonName,
-        }
+    case "GET_LESSON_EXAM":
+      return {
+        ...state,
+        lessonName: action.lessonName,
+      };
+    case "FINISHED_FALSE":
+      return {
+        ...state,
+        newExam: {
+          ...state.newExam,
+          finished: false,
+        },
+      };
     default:
       return state;
   }

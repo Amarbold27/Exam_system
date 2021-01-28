@@ -74,10 +74,10 @@ class AddNews extends Component {
             variant="contained"
             color="primary"
             onClick={this.handleSaveNews}
+            className={css.btnPost}
           >
             Нийтлэх
           </Button>
-          <button onClick={this.handleSaveNews}>Хадгалах</button>
         </div>
         {/* <div>{renderHTML(this.state.content)}</div> */}
       </div>
