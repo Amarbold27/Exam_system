@@ -8,10 +8,10 @@ const initialState = {
 const paymentReducer = (state = initialState, action) => {
   switch (action.type) {
     case "PAYSAVE_START":
-      alert("save.");
       return {
         ...state,
           saving: true,
+          finished: false,
       };
     case "PAYSAVE_SUCCESS":
       return {
@@ -24,7 +24,7 @@ const paymentReducer = (state = initialState, action) => {
       return {
         ...state,
           saving: false,
-          finished: true,
+          finished: false,
           error: action.error,
        };
     case "GETPAYSUCCESS":

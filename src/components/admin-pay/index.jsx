@@ -3,6 +3,8 @@ import "./admin-pay.css";
 import * as actions from "../../redux/actions/paymentAction";
 import { connect } from "react-redux";
 import { Alert } from "react-st-modal";
+import Alertt from ".././alert/index";
+import Spinner from "../spinner";
 
 class AdminPay extends Component {
   constructor(props) {
@@ -11,11 +13,13 @@ class AdminPay extends Component {
       startDate: new Date(),
       endDate: null,
       registerNum: null,
-      lessonName: null,
+      lessonName: "Математик",
       lessonregister: null,
     };
   }
+  componentDidMount() {
 
+  }
   lessons = [
     "Математик",
     "Физик",
@@ -94,6 +98,7 @@ class AdminPay extends Component {
             <span>Оруулах</span>
           </button>
         )}
+        
         {this.state.lessonName != null &&
           this.state.endDate != null &&
           this.state.registerNum != null && (
@@ -101,6 +106,15 @@ class AdminPay extends Component {
               <span>Оруулах</span>
             </button>
           )}
+          {this.props.saving && 
+          <Spinner/>
+          }
+          {this.props.finished &&
+          <Alertt msg="Амжилттай сунгалаа" color="green" errorName="Амжилттай"/>
+          }
+          {(this.props.error!==null)&&
+          <Alertt msg="Сунгалт амжилтгүй боллоо" color="red" errorName="Анхаар"/>
+          }
       </div>
     );
   }
