@@ -7,7 +7,7 @@ const BlurDiv = styled.div`
 @media (max-width: 1100px){
 position:absolute;
 top:52px;
-left:290px;
+left:250px;
 right:0;
 display:flex;
 flex:1;

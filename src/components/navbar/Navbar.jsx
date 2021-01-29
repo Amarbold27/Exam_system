@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Burger from "./Burger";
-import Log from '../../svgfiles/Anonymous-Time-icon.svg';
+import Log from "../../svgfiles/Anonymous-Time-icon.svg";
 //border-bottom: 2px solid #f1f1f1;  background: #3367d6;
 const Nav = styled.nav`
   width: 100%;
@@ -11,7 +11,7 @@ const Nav = styled.nav`
   -webkit-transition: height 1s ease;
   -o-transition: height 1s ease;
   transition: height 1s ease;
-  z-index:1;
+  z-index: 1;
   background: rgb(255, 171, 0);
   background: linear-gradient(
     72deg,
@@ -28,29 +28,33 @@ const Nav = styled.nav`
   flex-direction: row;
   justify-content: space-between;
   .logo {
-    display:flex;
-    align-items:center;
+    display: flex;
+    align-items: center;
+    font-family: Tahoma, Verdana, sans-serif;
+    font-weight: bold;
   }
   @media only screen and (max-width: 1100px) {
     position: fixed;
-    flex:1;
-    right:0;
+    flex: 1;
+    right: 0;
     height: 52px;
     -moz-transition: height 1s ease;
-  -webkit-transition: height 1s ease;
-  -o-transition: height 1s ease;
-  transition: height 1s ease;
+    -webkit-transition: height 1s ease;
+    -o-transition: height 1s ease;
+    transition: height 1s ease;
   }
 `;
 
 const Navbar = () => {
-  console.log(window.screen.width)
+  console.log(window.screen.width);
   return (
     <Nav>
-      {<div className="logo">
-        <img height={40} src={Log} alt="logo"/> 
-        <span>ЭРИН ҮЕ</span>
-        </div>}
+      {
+        <div className="logo">
+          <img height={40} src={Log} alt="logo" />
+          <span>ЭРИН ҮЕ</span>
+        </div>
+      }
       <Burger />
     </Nav>
   );
