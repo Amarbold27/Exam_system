@@ -27,7 +27,7 @@ const footer = () => {
               <FaFacebookF />
               <a href="https://www.facebook.com/togookhuu.nyamjav">
                 www.facebook.com/erin-uy
-              </a>{" "}
+              </a>
             </li>
           </ul>
         </div>

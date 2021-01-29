@@ -1,6 +1,7 @@
 const initialState = {
   loading: false,
   error: null,
+  //success: false,
   news: [],
   newNews: {
     saving: false,
@@ -52,8 +53,17 @@ const newsReducer = (state = initialState, action) => {
         newNews: {
           ...state.newNews,
           saving: false,
-          finished: true,
+          //finished: true,
           error: action.error,
+        },
+      };
+    case "FINISHED_FALSE":
+      return {
+        ...state,
+        newNews: {
+          ...state.newNews,
+          finished: false,
+          error: null,
         },
       };
     default:

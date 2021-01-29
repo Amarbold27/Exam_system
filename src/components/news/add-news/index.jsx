@@ -6,6 +6,7 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { connect } from "react-redux";
 import * as actions from "../../../redux/actions/newsAction";
+import Spinner from "../../spinner";
 //import renderHTML from "react-render-html";
 
 class AddNews extends Component {
@@ -22,9 +23,9 @@ class AddNews extends Component {
     this.handleImgUrl = this.handleImgUrl.bind(this);
     this.handleSaveNews = this.handleSaveNews.bind(this);
   }
-  //   componentDidMount() {
-  //     this.focusEditor();
-  //   }
+  componentDidMount() {
+    this.props.clearAlert();
+  }
   onInputChange(e) {
     this.setState({
       content: e,
@@ -69,6 +70,12 @@ class AddNews extends Component {
           value={this.state.content}
           onChange={this.onInputChange}
         />
+        {this.props.newsState.saving && <Spinner />}
+        {this.props.newsState.finished && <span>Амжилттай нийтэллээ.</span>}
+        {/* <span>Амжилттай нийтэллээ.</span> */}
+        {this.props.newsState.error && (
+          <span>Алдаа гарлаа! Та дараа дахин оролдоно уу.</span>
+        )}
         <div className={css.buttons}>
           <Button
             variant="contained"
@@ -101,6 +108,10 @@ AddNews.formats = [
   "video",
   "clean",
   "code-block",
+  "align",
+  "color",
+  "background",
+  "indent",
 ];
 AddNews.modules = {
   toolbar: [
@@ -111,18 +122,20 @@ AddNews.modules = {
     ["link", "image", "video"],
     ["clean"],
     ["code-block"],
+    [{ align: [] }],
+    [{ color: [] }, { background: [] }],
+    [{ indent: "-1" }, { indent: "+1" }],
   ],
 };
 const mapStateToProps = (state) => {
   return {
-    saving: state.newsReducer.saving,
-    error: state.newsReducer.error,
-    finished: state.newsReducer.finished,
+    newsState: state.newsReducer.newNews,
   };
 };
 const mapDispatchToProps = (dispatch) => {
   return {
     saveNews: (news) => dispatch(actions.saveNews(news)),
+    clearAlert: () => dispatch(actions.finishedFalse()),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(AddNews);

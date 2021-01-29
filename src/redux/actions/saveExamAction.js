@@ -34,3 +34,8 @@ export const saveActionError = (error) => {
     error,
   };
 };
+export const finishedFalse = () => {
+  return {
+    type: "FINISHED_FALSE",
+  };
+};

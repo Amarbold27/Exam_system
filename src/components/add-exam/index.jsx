@@ -22,6 +22,9 @@ class AddExam extends React.Component {
       description: "",
     };
   }
+  componentDidMount = () => {
+    this.props.finishedFalse();
+  };
   lessons = [
     "Математик",
     "Физик",
@@ -33,20 +36,7 @@ class AddExam extends React.Component {
     "Түүх",
     "Нийгэм",
   ];
-  classes = [
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "10",
-    "11",
-    "12",
-  ];
+  classes = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
   category = ["Уралдаант сорил", "ЭЕШ", "Ахлах анги", "Дунд анги", "Бага анги"];
   //options = ["one", "two", "three"];
   onSelectLesson = (e) => {
@@ -99,6 +89,7 @@ class AddExam extends React.Component {
     this.props.saveExam(newExam);
   };
   clearFields = () => {
+    this.props.finishedFalse();
     //console.log("Date: ", this.state.date);
     this.setState({
       lesson: "Математик",
@@ -118,29 +109,55 @@ class AddExam extends React.Component {
     return (
       <div className={style.container}>
         <div className={style.lesson}>Хичээл</div>
-        <select className={style.addSelect} value={this.state.lesson}  onChange={this.onSelectLesson} > 
-        {this.lessons.map(les =>
-        <option className="admin-options"  value={les}>{les}</option>
-        )}
-      </select>
-   
+        <select
+          className={style.addSelect}
+          value={this.state.lesson}
+          onChange={this.onSelectLesson}
+        >
+          {this.lessons.map((les) => (
+            <option className="admin-options" value={les}>
+              {les}
+            </option>
+          ))}
+        </select>
+
         <div className={style.class}>Анги</div>
-        <select className={style.addSelect} value={this.state.class}  onChange={this.onSelectClass} > 
-          {this.classes.map(val=>
-            <option className="admin-options"  value={val}>{val}</option>
-          )}
-      </select>
+        <select
+          className={style.addSelect}
+          value={this.state.class}
+          onChange={this.onSelectClass}
+        >
+          {this.classes.map((val) => (
+            <option className="admin-options" value={val}>
+              {val}
+            </option>
+          ))}
+        </select>
         <div className={style.category}>Төрөл</div>
-        <select className={style.addSelect} value={this.state.category}  onChange={this.onSelectCategory} > 
-          {this.category.map(val=>
-            <option className="admin-options"  value={val}>{val}</option>
-          )}
-      </select>
+        <select
+          className={style.addSelect}
+          value={this.state.category}
+          onChange={this.onSelectCategory}
+        >
+          {this.category.map((val) => (
+            <option className="admin-options" value={val}>
+              {val}
+            </option>
+          ))}
+        </select>
         <div className={style.price}>Төлбөртэй эсэх</div>
-        <select className={style.addSelect} value={this.state.price}  onChange={this.onSelectPrice} > 
-          <option className="admin-options"  value="Төлбөртэй">Төлбөртэй</option>
-          <option className="admin-options"  value="Үнэгүй">Үнэгүй</option>
-      </select>
+        <select
+          className={style.addSelect}
+          value={this.state.price}
+          onChange={this.onSelectPrice}
+        >
+          <option className="admin-options" value="Төлбөртэй">
+            Төлбөртэй
+          </option>
+          <option className="admin-options" value="Үнэгүй">
+            Үнэгүй
+          </option>
+        </select>
         <div className={style.startDate}>Эхлэх өдөр</div>
         <DateTimePicker
           value={this.state.date}
@@ -155,7 +172,6 @@ class AddExam extends React.Component {
           className={style.inputDuration}
           placeholder="Үргэлжлэх хугацаа минутаар."
         />
-        {this.props.newExamState.saving && <Spinner />}
         <div className={style.examUrl}>Шалгалтын холбоос</div>
         <input
           type="text"
@@ -187,6 +203,14 @@ class AddExam extends React.Component {
           onChange={this.handleDescription}
           className={style.descArea}
         ></textarea>
+        {this.props.newExamState.saving && (
+          <div className={style.spinner}>
+            <Spinner />
+          </div>
+        )}
+        {this.props.newExamState.finished && (
+          <span className={style.stateSuccess}>Амжилттай хадгаллаа</span>
+        )}
         <div className={style.btns}>
           <button className={style.btnClear} onClick={this.clearFields}>
             Цэвэрлэх
@@ -210,6 +234,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     saveExam: (exam) => dispatch(actions.saveExam(exam)),
+    finishedFalse: () => dispatch(actions.finishedFalse()),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(AddExam);

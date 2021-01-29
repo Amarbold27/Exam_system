@@ -194,7 +194,6 @@ class EditExam extends React.Component {
         {this.props.newExamState.finished && (
           <span className={style.stateSuccess}>Амжилттай хадгаллаа</span>
         )}
-        {/* <span className={style.stateSuccess}>Амжилттай хадгаллаа</span> */}
         <div className={style.btns}>
           <button className={style.btnClear} onClick={this.props.closeAction}>
             Хаах
