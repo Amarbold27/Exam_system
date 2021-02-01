@@ -129,7 +129,7 @@ const RightNav = (props) => {
         </li>
         <li>
           {props.userId && (
-            <Link to="/add-exam" className="link" onClick={props.hideShow}>
+            <Link  className="link" onClick={props.hideShow}>
               <FiUser />
               <span className="title">
                 {props.lastname.substr(0, 1) + ". " + props.firstname}
