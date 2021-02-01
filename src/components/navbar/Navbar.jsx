@@ -5,7 +5,7 @@ import Log from "../../svgfiles/Anonymous-Time-icon.svg";
 //border-bottom: 2px solid #f1f1f1;  background: #3367d6;
 const Nav = styled.nav`
   width: 100%;
-  min-width: 320px;
+  min-width: 280px;
   height: 70px;
   -moz-transition: height 1s ease;
   -webkit-transition: height 1s ease;
@@ -32,6 +32,7 @@ const Nav = styled.nav`
     align-items: center;
     font-family: Tahoma, Verdana, sans-serif;
     font-weight: bold;
+    color: white;
   }
   @media only screen and (max-width: 1100px) {
     position: fixed;
@@ -46,13 +47,13 @@ const Nav = styled.nav`
 `;
 
 const Navbar = () => {
-  console.log(window.screen.width);
+  //console.log("home path: ", window.location.pathname);
   return (
     <Nav>
       {
         <div className="logo">
           <img height={40} src={Log} alt="logo" />
-          <span>ЭРИН ҮЕ</span>
+          <span className="logoName">ЭРИН ҮЕ</span>
         </div>
       }
       <Burger />

@@ -1,0 +1,53 @@
+/* .login-err {
+    margin-top: 30px;
+    width: 250px;
+    height: 30px;
+    margin-left:25px;
+    border: 1px solid red;
+    border-radius: 5px;
+    background-color: #fff;
+    color: crimson;
+    display:flex;
+    font-size: 25px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+.login-err>span{
+    width: 100%;
+    text-align: center;
+    margin-left: 5px;
+} */
+/* .icons{
+    color: rgb(255, 171, 0);
+} */
+/* .alert-icon{
+    border-right: 1px solid red;
+} */
+  /* .log-alert-icons{
+      height: 50px;
+  } */
+
+
+  .alert {
+    padding: 20px;
+    color: white;
+    width: 210px;
+    margin:10px 0 0 0px;
+  }
+  
+  .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .closebtn:hover {
+    color: black;
+  }

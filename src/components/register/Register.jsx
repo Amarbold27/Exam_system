@@ -4,6 +4,7 @@ import * as actions from "../../redux/actions/signupAction";
 import { connect } from "react-redux";
 import Spinner from "../spinner";
 import { Redirect } from "react-router-dom";
+import Alertt from ".././alert/index";
 
 class Register extends Component {
   state = {
@@ -15,7 +16,7 @@ class Register extends Component {
     class: "",
     password1: "",
     password2: "",
-    error: "",
+    error: null,
     role: "student",
   };
   changeLastName = (e) => {
@@ -98,24 +99,7 @@ class Register extends Component {
           />
           <label className="anime-label">И-мэйл хаяг</label>
         </div>
-        <div className="form-group">
-          <input
-            type="text"
-            className="form-control"
-            onChange={this.changeSchool}
-            required
-          />
-          <label className="anime-label">Сургууль</label>
-        </div>
-        <div className="form-group">
-          <input
-            type="text"
-            className="form-control"
-            onChange={this.changeClass}
-            required
-          />
-          <label className="anime-label">Анги</label>
-        </div>
+        
         <div className="form-group">
           <input
             type="password"
@@ -135,9 +119,12 @@ class Register extends Component {
           <label className="anime-label">Нууц үг давтах</label>
         </div>
         {this.props.saving && <Spinner />}
-        <button type="submit" className="btn-reg" onClick={this.signup}>
+          <button type="submit" className="btn-reg" onClick={this.signup}>
           <span>Бүртгүүлэх</span>
         </button>
+        {this.state.error!=null &&
+        <Alertt msg={this.state.error} color="red" errorName="Анхаар"/>
+        }
         <p className="forgot-password text-right">
           Нэвтрэх бол <a href="/log-in">log in?</a>
         </p>

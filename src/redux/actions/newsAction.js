@@ -3,19 +3,16 @@ export const saveNews = (news) => {
   return function (dispatch, getState) {
     dispatch(newsSaveStart());
     const token = getState().signupReducer.token;
-    // axios
-    //   .post(
-    //     `https://exam-system-fb26a-default-rtdb.firebaseio.com/news.json?auth=${token}`,
-    //     news
-    //   )
-    //   .then((response) => {
-    //     dispatch(newsSaveSuccess(response));
-    //     //console.log("Response news: ", response);
-    //   })
-    //   .catch((err) => dispatch(newsSaveError(err)));
-
-    //test
-    dispatch(newsSaveSuccess("data"));
+    axios
+      .post(
+        `https://exam-system-fb26a-default-rtdb.firebaseio.com/news.json?auth=${token}`,
+        news
+      )
+      .then((response) => {
+        dispatch(newsSaveSuccess(response));
+        //console.log("Response news: ", response);
+      })
+      .catch((err) => dispatch(newsSaveError(err)));
   };
 };
 export const newsSaveStart = () => {

@@ -13,7 +13,19 @@
   background-color: #f5fcfc;
   border-radius: 5px;
 }
-
+.boldtext{
+  font-style:italic;
+  font-weight: 1000;
+  color:black;
+}
+.redtext{
+  font-weight: 1000;
+  color:red;
+}
+.bankNumber{
+  font-weight: 1000;
+  color:green;
+}
 .date {
   grid-row-start: 1;
   grid-row-end: 2;
@@ -21,7 +33,7 @@
   grid-column-end: 3;
   text-align: left;
   font-size: 16px;
-  color: #3b7eeb;
+  color: #304b8e;
 }
 .title {
   grid-column-start: 1;
@@ -72,7 +84,7 @@
 .btnStart,
 .btnCalc,
 .btnRes {
-  color: #6b6a6a;
+  color: #304b8e;
   text-decoration: none;
   text-transform: uppercase;
   text-align: center;
@@ -94,9 +106,9 @@
 .btnRes:hover {
   background-color: #f2f2f2;
 }
-.icon {
+.icons {
   margin-top: 2px;
-  color: blue;
+  color: #304b8e;
 }
 .timeLimit {
   grid-column-start: 1;

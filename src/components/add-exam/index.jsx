@@ -5,6 +5,7 @@ import DateTimePicker from "react-datetime-picker";
 import * as actions from "../../redux/actions/saveExamAction";
 import { connect } from "react-redux";
 import Spinner from "../../components/spinner";
+import Alert from "../alert";
 
 class AddExam extends React.Component {
   constructor(props) {
@@ -209,7 +210,18 @@ class AddExam extends React.Component {
           </div>
         )}
         {this.props.newExamState.finished && (
-          <span className={style.stateSuccess}>Амжилттай хадгаллаа</span>
+          <div className={style.stateSuccess}>
+            <Alert msg="хадгаллаа." color="#4CAF50" errorName="Амжилттай" />
+          </div>
+        )}
+        {this.props.newExamState.error && (
+          <div className={style.stateSuccess}>
+            <Alert
+              msg="Дараа дахин оролдоно уу."
+              color="#f44336"
+              errorName="Алдаа"
+            />
+          </div>
         )}
         <div className={style.btns}>
           <button className={style.btnClear} onClick={this.clearFields}>

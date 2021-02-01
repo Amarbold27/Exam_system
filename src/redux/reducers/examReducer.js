@@ -74,6 +74,7 @@ const examReducer = (state = initialState, action) => {
         newExam: {
           ...state.newExam,
           finished: false,
+          error: null,
         },
       };
     default:

@@ -41,7 +41,7 @@ class NewsButton extends React.Component {
       <Content>
         <div className={css.postdata}>
           {/* <Link to={`${url}/${props.id}`}>{props.news.title}</Link> */}
-          <Link to={`/${this.props.id}`} className={css.newsLink}>
+          <Link to={`/news/${this.props.id}`} className={css.newsLink}>
             {this.props.news.title}
           </Link>
           {/* <button onClick={this.handleUrl}>{this.props.news.title}</button> */}

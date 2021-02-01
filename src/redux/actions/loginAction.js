@@ -46,11 +46,13 @@ export const loginStart = () => {
 // };
 
 export const loginError = (error) => {
+
   return {
     type: "LOGIN_ERROR",
     error,
   };
 };
+
 export const logOut = () => {
   localStorage.removeItem("token");
   localStorage.removeItem("userId");

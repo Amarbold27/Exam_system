@@ -5,12 +5,16 @@ import * as actions from "../../redux/actions/loginAction";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { IconContext } from "react-icons/lib";
+import Alertt from "../alert/index";
 import { FaUserCircle, BiLogIn, RiLockPasswordFill } from "react-icons/all";
 class Login extends Component {
   state = {
     email: "",
     password: "",
   };
+  // componentDidMount = () => {
+  //   this.props.firebaseError = null;
+  // };
 
   changeEmail = (e) => {
     this.setState({ email: e.target.value });
@@ -23,7 +27,6 @@ class Login extends Component {
     this.props.login(this.state.email, this.state.password);
   };
   render() {
-    //console.log("role: " + this.props.role);
     return (
       <IconContext.Provider value={{ className: "icons" }}>
         <div className="login-form">
@@ -61,17 +64,19 @@ class Login extends Component {
             </div>
           </div>
           {this.props.logginIn && <Spinner />}
-          {this.props.firebaseError === "INVALID_PASSWORD" ? (
-            <div className="login-error">Нууц үг буруу</div>
-          ) : this.props.firebaseError === "EMAIL_NOT_FOUND" ? (
-            <div className="login-error">Имэйл олдсонгүй</div>
-          ) : (
-            this.props.firebaseError === "INVALID_EMAIL" && (
-              <div className="login-error">Имэйл буруу</div>
-            )
+          {this.props.firebaseError === "INVALID_PASSWORD" && (
+            <Alertt msg="Нууц үг буруу" color="#f44336" errorName="Анхаар" />
           )}
+          {this.props.firebaseError === "EMAIL_NOT_FOUND" && (
+            <Alertt msg="Имэйл олдсонгүй" color="#f44336" errorName="Анхаар" />
+          )}
+          {this.props.firebaseError === "INVALID_EMAIL" && (
+            <Alertt msg="Имэйл буруу" color="#f44336" errorName="Анхаар" />
+          )}
+          {/* {(this.props.firebaseError !== "INVALID_EMAIL") && (this.props.firebaseError !== "EMAIL_NOT_FOUND") && (this.props.firebaseError !== "INVALID_PASSWORD")&& (
+             <Alertt msg="Нэвтрэх оролдлогын тоо хэтэрлээ" color="red" errorName="Анхаар"/>
+            )} */}
           <p className="forget-password-div">
-            {" "}
             <Link to="/reset">
               <span className="forget-password-span">Forget password</span>
             </Link>

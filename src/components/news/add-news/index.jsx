@@ -7,6 +7,7 @@ import "react-quill/dist/quill.snow.css";
 import { connect } from "react-redux";
 import * as actions from "../../../redux/actions/newsAction";
 import Spinner from "../../spinner";
+import Alert from "../../alert";
 //import renderHTML from "react-render-html";
 
 class AddNews extends Component {
@@ -71,10 +72,20 @@ class AddNews extends Component {
           onChange={this.onInputChange}
         />
         {this.props.newsState.saving && <Spinner />}
-        {this.props.newsState.finished && <span>Амжилттай нийтэллээ.</span>}
+        {this.props.newsState.finished && (
+          <Alert
+            msg="Мэдээ нийтлэгдлээ."
+            color="#4CAF50"
+            errorName="Амжилттай"
+          />
+        )}
         {/* <span>Амжилттай нийтэллээ.</span> */}
         {this.props.newsState.error && (
-          <span>Алдаа гарлаа! Та дараа дахин оролдоно уу.</span>
+          <Alert
+            msg="Дараа дахин оролдоно уу."
+            color="#f44336"
+            errorName="Алдаа"
+          />
         )}
         <div className={css.buttons}>
           <Button

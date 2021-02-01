@@ -1,9 +1,16 @@
-import { AiOutlineHome, AiOutlineFileDone } from "react-icons/ai";
+import { AiOutlineHome, AiOutlineFileDone, BiNews } from "react-icons/all";
 export const SidebarData = [
   {
     title: "НҮҮР",
     icon: <AiOutlineHome />,
     path: "/",
+    cName: "nav-text",
+    subNav: false,
+  },
+  {
+    title: "МЭДЭЭ",
+    icon: <BiNews />,
+    path: "/news",
     cName: "nav-text",
     subNav: false,
   },

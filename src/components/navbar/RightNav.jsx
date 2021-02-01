@@ -74,7 +74,7 @@ const RightNav = (props) => {
   }
   let href = window.location.pathname;
   let hrefLenght = href.length;
-  console.log("pathname_______", href);
+  //console.log("pathname_______", href);
   return (
     <IconContext.Provider value={{ className: "icons" }}>
       <Ul open={props.open}>
